@@ -1,6 +1,8 @@
 # RMHD with PINN 
 
-# Table of contents.
+## Table of Contents
+- [Architecture](#architecture)
+- [Resources](#resources)
 
 ## Architecture
 
@@ -10,10 +12,11 @@ Some list
 - like this
 - like that
   
+## Resources
+
 [This link](https://en.wikipedia.org/wiki/Magnetohydrodynamics)
 
 ![sun picture](images/sun.jpg)
 
 [Here is a google drive link for the data](todo)
-
 
