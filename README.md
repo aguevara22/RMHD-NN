@@ -1,5 +1,7 @@
 # RMHD with PINN 
 
+#Table of contents.
+
 ## Architecture
 
 Random. 
