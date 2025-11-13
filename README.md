@@ -1,6 +1,6 @@
 # RMHD with PINN 
 
-#Table of contents.
+# Table of contents.
 
 ## Architecture
 
