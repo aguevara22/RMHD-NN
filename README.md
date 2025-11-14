@@ -8,6 +8,8 @@
 
 Random. 
 
+$\frac{1}{2}$
+
 Some list
 - like this
 - like that
