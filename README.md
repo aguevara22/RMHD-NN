@@ -1,4 +1,4 @@
-# RMHD PINN Residual Refinement
+# Reconstructing RMHD from Physically Informed Neural Networks
 
 A research code (`rmhdpinn.ipynb`) that implements physics-informed neural networks (PINNs) for resistive magnetohydrodynamics (RMHD). Instead of advancing the standard conservative form, the workflow relies on Jacobians of the primitive-variable system (`M`, `AX`, source terms) to measure how well a neural surrogate satisfies the PDEs. The notebook first trains a baseline PINN, then iteratively learns residual-correction networks using stored Jacobian operators.
 
