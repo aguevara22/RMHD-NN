@@ -17,13 +17,11 @@ A research notebook (`rmhdpinn.ipynb`) that experiments with physics-informed ne
 - like this
 - like that
 
-## Resources
+## Background
 
-[This link](https://en.wikipedia.org/wiki/Magnetohydrodynamics)
+[Magnetohydrodynamics](https://en.wikipedia.org/wiki/Magnetohydrodynamics)
 
 ![sun picture](images/sun.jpg)
-
-[Here is a google drive link for the data](todo)
 
 ## Overview
 The goal is to approximate RMHD dynamics with a neural surrogate that respects the governing equations. A primary PINN fits available simulation data, and two successive residual networks (`model_residual`, `model_residual_it`) learn to cancel the PDE violations of the latest solution (`model`, `corr`, `corr2`). Key ideas:
