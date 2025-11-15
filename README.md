@@ -33,7 +33,7 @@ The goal is to approximate RMHD dynamics with a neural surrogate that respects t
 At each collocation point we evaluate the primitive state $\mathbf{p}(x,t)$, and the RMHD system is written in Jacobian form
 
 $$
-M(\mathbf{p})\,\partial_t \mathbf{p} + A_x(\mathbf{p})\,\partial_x \mathbf{p} + S(\mathbf{p})\,\mathbf{p} = \mathbf{0},
+M(\mathbf{p}) \partial_t \mathbf{p} + A_x(\mathbf{p}) \partial_x \mathbf{p} + S(\mathbf{p}) \mathbf{p} = \mathbf{0},
 $$
 
 where $M$ is the time Jacobian, $A_x$ is the spatial Jacobian, and $S = \partial_t M + \partial_x A_x$ captures source-like terms arising from spatially varying operators. During training we compare against precomputed targets
