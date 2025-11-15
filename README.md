@@ -11,12 +11,6 @@ A research notebook (`rmhdpinn.ipynb`) that experiments with physics-informed ne
 - [Running the Notebook](#running-the-notebook)
 - [Extending the Framework](#extending-the-framework)
 
-## Architecture
-
-@@ -10,10 +12,11 @@ Some list
-- like this
-- like that
-
 ## Background
 
 [Magnetohydrodynamics](https://en.wikipedia.org/wiki/Magnetohydrodynamics)
