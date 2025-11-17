@@ -14,16 +14,18 @@ A research code (`rmhdpinn.ipynb`) that implements physics-informed neural netwo
 
 ## RMHD
 
-Relativistic magnetohydrodynamics (RMHD) describes a conducting fluid coupled to electromagnetic fields in a relativistic setting. The governing equations follow from stress--energy conservation, baryon conservation, and Maxwell’s equations together with the ideal-MHD condition $F^{\mu\nu}u_\nu=0$. Linearizing around a homogeneous background $(\rho_0,p_0,u^\mu_0,B^\mu_0)$ yields a first-order system
-\[
-\partial_t\,\delta U + A^i\,\partial_i \delta U = 0,
-\]
+Relativistic magnetohydrodynamics (RMHD) describes a conducting fluid coupled to electromagnetic fields in a relativistic setting. The governing equations follow from stress--energy conservation, baryon conservation, and Maxwell’s equations together with the ideal-MHD condition $F^{\mu\nu}u_\nu=0$.
+
+Linearizing around a homogeneous background $(\rho_0,p_0,u^\mu_0,B^\mu_0)$ yields a first-order system
+
+$\partial_t\,\delta U + A^i\,\partial_i \delta U = 0$
+
 where the Jacobians $A^i=\partial F^i/\partial U$ encode the characteristic structure; the eigenvalues of $A^i n_i$ give the wave speeds along direction $n_i$.
 
 Alfvén waves emerge as the transverse, incompressible characteristic family. In RMHD their propagation speed is
-\[
-v_A^2 = \frac{b^2}{b^2 + h},
-\]
+
+$v_A^2 = \frac{b^2}{b^2 + h}$
+
 with $b^2$ the magnetic-field energy density in the fluid frame and $h=\rho_0+p_0+\varepsilon_0$ the enthalpy. They propagate strictly along the magnetic field, are polarized perpendicular to both $n_i$ and $B_i$, and remain linearly degenerate, making them an essential diagnostic mode of any RMHD linearization.
 
 
