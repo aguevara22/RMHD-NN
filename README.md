@@ -43,9 +43,7 @@ with $b^2$ the magnetic-field energy density in the fluid frame and $h=\rho_0+p_
 
 ## Overview of our approach
 
-The goal is to approximate RMHD dynamics with a neural surrogate that respects the governing equations. The neural network (PINN) itself is the map
-
-$$ x^\mu \to P=(\rho_0,p_0,u^\mu,B^\mu)$$.
+The goal is to approximate RMHD dynamics with a neural surrogate that respects the governing equations. The neural network (PINN) itself is the map $ x^\mu \to P=(\rho_0,p_0,u^\mu,B^\mu)$.
 
 A primary PINN fits available simulation data, and imposes the constraint $  \partial_t U(P) + \partial_i J^i(P) = 0 $ in the loss function. Schematically:
 
@@ -61,8 +59,8 @@ Two successive residual networks (`model_residual`, `model_residual_it`) learn t
 - **Iterative correction.** Residual networks subtract from the baseline to produce `corr(x)` and `corr2(x)`, mimicking deferred corrections while sharing samplers and conditioning data.
 - **Muon optimizer.** Training leverages the custom `PINNMuonOptimizer` (from `mm.py`) for mixed second-order and Adam-like updates.
 
-## Physics Background
-- **Model:** 1D resistive MHD with a background guide field (`B_x = 5`). Primitive variables are density, velocity, pressure, and transverse magnetic components.
+## Jacobian form of the RMHD system
+- **Model:** For instance, we can take 1D RMHD with a background guide field (`B_x = 5`). Primitive variables are density, velocity, pressure, and transverse magnetic components.
 - **Formulation:** Rather than conservative fluxes, the notebook works with the Jacobian matrices (`compute_M`, `compute_AX`) imported from `jacobians.py`. These encode the linearized PDE system used to define residuals.
 - **Boundary/conditioning data:** Snapshot files in `data1d/` provide time slices at `t = 0.0, 0.036, 0.1` for supervised anchoring. Open boundary data at `t=0` supply additional constraints.
 
