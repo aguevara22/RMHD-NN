@@ -1,6 +1,6 @@
 # Reconstructing RMHD from Physically Informed Neural Networks
 
-A research code (`rmhdpinn.ipynb`) that implements physics-informed neural networks (PINNs) for resistive magnetohydrodynamics (RMHD). Instead of advancing the standard conservative form, the workflow relies on Jacobians of the primitive-variable system (`M`, `AX`, source terms) to measure how well a neural surrogate satisfies the PDEs. The notebook first trains a baseline PINN, then iteratively learns residual-correction networks using stored Jacobian operators.
+A research code (`rmhdpinn.ipynb`) that implements physics-informed neural networks (PINNs) for relativistic magnetohydrodynamics (RMHD). Instead of advancing the standard conservative form, the workflow relies on Jacobians of the primitive-variable system (`M`, `AX`, source terms) to measure how well a neural surrogate satisfies the PDEs. The notebook first trains a baseline PINN, then iteratively learns residual-correction networks using stored Jacobian operators.
 
 ## Table of Contents
 - [RMHD](#RMHD)
@@ -14,13 +14,18 @@ A research code (`rmhdpinn.ipynb`) that implements physics-informed neural netwo
 
 ## RMHD
 
-Relativistic magnetohydrodynamics (RMHD) describes a conducting fluid coupled to electromagnetic fields in a relativistic setting. It is a generalization of more standard MHD in plasma physics and a preamble to full-fledged GR-MHD modelling of black hole accretion.
+Relativistic magnetohydrodynamics (RMHD) describes a conducting fluid coupled to electromagnetic fields in a relativistic setting. It is a generalization of more standard MHD in plasma physics and a preamble to the full-fledged GR-MHD modelling of black hole accretion.
 
-As in the full GRMHD setup, the governing equations follow from stress--energy conservation, current conservation, and Maxwell. For their numerical implementation they are usually written in conservative scheme.
+As in the full GRMHD setup, the governing equations follow from stress--energy conservation, current conservation, and Maxwell (We will further assume the ideal-MHD condition $F^{\mu\nu}u_\nu=0$.). These form a first order coupled PDE system. For their numerical implementation it is usually written in the conservative scheme:
 
 $$ \partial_t U(P) + \partial_i J^i(P) = 0 $$
 
-for functions of the primitives $P$. We will further assume the ideal-MHD condition $F^{\mu\nu}u_\nu=0$.
+for functions of the primitives $P$. A numerical integrator would typically perform 
+
+1) time step to update $U(P)$ (primitive function)
+2) The numerical inversion $P=P(U)$, a trascendental function highly sensitive to the background
+3) Evaluate the current divergence $\partial_i J^i(P)$ via finite differences or finite elements and repeat step 1.
+
 
 Linearizing around a homogeneous background $(\rho_0,p_0,u^\mu_0,B^\mu_0)$ yields a first-order system
 
