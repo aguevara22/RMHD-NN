@@ -3,6 +3,7 @@
 A research code (`rmhdpinn.ipynb`) that implements physics-informed neural networks (PINNs) for resistive magnetohydrodynamics (RMHD). Instead of advancing the standard conservative form, the workflow relies on Jacobians of the primitive-variable system (`M`, `AX`, source terms) to measure how well a neural surrogate satisfies the PDEs. The notebook first trains a baseline PINN, then iteratively learns residual-correction networks using stored Jacobian operators.
 
 ## Table of Contents
+- [RMHD](#RMHD)
 - [Overview](#overview)
 - [Physics Background](#physics-background)
 - [Notebook Workflow](#notebook-workflow)
@@ -11,7 +12,24 @@ A research code (`rmhdpinn.ipynb`) that implements physics-informed neural netwo
 - [Running the Notebook](#running-the-notebook)
 - [Extending the Framework](#extending-the-framework)
 
-## Overview
+## RMHD
+
+Relativistic magnetohydrodynamics (RMHD) describes a conducting fluid coupled to electromagnetic fields in a relativistic setting. The governing equations follow from stress--energy conservation, baryon conservation, and Maxwell’s equations together with the ideal-MHD condition $F^{\mu\nu}u_\nu=0$. Linearizing around a homogeneous background $(\rho_0,p_0,u^\mu_0,B^\mu_0)$ yields a first-order system
+\[
+\partial_t\,\delta U + A^i\,\partial_i \delta U = 0,
+\]
+where the Jacobians $A^i=\partial F^i/\partial U$ encode the characteristic structure; the eigenvalues of $A^i n_i$ give the wave speeds along direction $n_i$.
+
+Alfvén waves emerge as the transverse, incompressible characteristic family. In RMHD their propagation speed is
+\[
+v_A^2 = \frac{b^2}{b^2 + h},
+\]
+with $b^2$ the magnetic-field energy density in the fluid frame and $h=\rho_0+p_0+\varepsilon_0$ the enthalpy. They propagate strictly along the magnetic field, are polarized perpendicular to both $n_i$ and $B_i$, and remain linearly degenerate, making them an essential diagnostic mode of any RMHD linearization.
+
+
+
+## Overview of our approach
+
 The goal is to approximate RMHD dynamics with a neural surrogate that respects the governing equations. A primary PINN fits available simulation data, and two successive residual networks (`model_residual`, `model_residual_it`) learn to cancel the PDE violations of the latest solution (`model`, `corr`, `corr2`). Key ideas:
 
 - **Jacobian-based residuals.** `data_out` converts primitive predictions into the reduced Jacobian blocks `M`, `AX`, and differential terms (`dP/dt`, `dP/dx`), enabling a linear form `M(dp/dt - dpdt_r) + AX(dp/dx - dpdx_r) + S p`.
