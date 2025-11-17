@@ -20,7 +20,7 @@ As in the full GRMHD setup, the governing equations follow from stress--energy c
 
 $$ \partial_t U(P) + \partial_i J^i(P) = 0 $$
 
-for functions of the primitives $P$. A numerical integrator would typically perform 
+for functions of the primitives $P=(\rho_0,p_0,u^\mu,B^\mu)$. A numerical integrator would typically perform 
 
 1) time step to update $U(P)$ (primitive function)
 2) The numerical inversion $P=P(U)$, a trascendental function highly sensitive to the background
@@ -43,7 +43,18 @@ with $b^2$ the magnetic-field energy density in the fluid frame and $h=\rho_0+p_
 
 ## Overview of our approach
 
-The goal is to approximate RMHD dynamics with a neural surrogate that respects the governing equations. A primary PINN fits available simulation data, and two successive residual networks (`model_residual`, `model_residual_it`) learn to cancel the PDE violations of the latest solution (`model`, `corr`, `corr2`). Key ideas:
+The goal is to approximate RMHD dynamics with a neural surrogate that respects the governing equations. The neural network (PINN) itself is the map
+
+NN: $$ x^\mu \to P=(\rho_0,p_0,u^\mu,B^\mu)$$.
+
+A primary PINN fits available simulation data, and imposes the constraint $  \partial_t U(P) + \partial_i J^i(P) = 0 $ in the loss function. Schematically:
+
+$$\mathcal{L}_{\textrm{totla}} = w_1 \mathcal{L}_{\textrm{PDE}} + w_2 \mathcal{L}_{\textrm{PDE}}$$
+
+see [PINN] for more details.
+
+
+Two successive residual networks (`model_residual`, `model_residual_it`) learn to cancel the PDE violations of the latest solution (`model`, `corr`, `corr2`). Key ideas:
 
 - **Jacobian-based residuals.** `data_out` converts primitive predictions into the reduced Jacobian blocks `M`, `AX`, and differential terms (`dP/dt`, `dP/dx`), enabling a linear form `M(dp/dt - dpdt_r) + AX(dp/dx - dpdx_r) + S p`.
 - **Residual-guided sampling.** `build_residual_mixture_coords` biases collocation points toward regions with high Jacobian residual norms, mixing in uniform samples for coverage.
