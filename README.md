@@ -11,12 +11,6 @@ A research code (`rmhdpinn.ipynb`) that implements physics-informed neural netwo
 - [Running the Notebook](#running-the-notebook)
 - [Extending the Framework](#extending-the-framework)
 
-## Background
-
-[Magnetohydrodynamics](https://en.wikipedia.org/wiki/Magnetohydrodynamics)
-
-![sun picture](images/sun.jpg)
-
 ## Overview
 The goal is to approximate RMHD dynamics with a neural surrogate that respects the governing equations. A primary PINN fits available simulation data, and two successive residual networks (`model_residual`, `model_residual_it`) learn to cancel the PDE violations of the latest solution (`model`, `corr`, `corr2`). Key ideas:
 
