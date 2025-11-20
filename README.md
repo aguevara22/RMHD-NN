@@ -61,11 +61,15 @@ The architecture is a standard MLP with different sizes for tests in one and two
 
 A key ingredient to improve convergence of the PDE loss is the implementation of MUON optimizer [2]. MUON allows for rapid training of the previously simulated data during the first ~1000 epochs. We then gradually increase the PDE weight for around ~10000 epochs. *The data is only inocorporated through two snapshots at early times*. 
 
-A typical training process will look as follows:
+A typical training process for 1d will look as follows:
 
 
 
 ![Training process](training.png)
+
+The network provides an accurate extrapolation of the shockwave 1d process. This is true even at late times where no data is provided. 
+
+For 2d and the above described network we test a cylindrical explosion process.
 
 ## Optional: Residual Network
 Two successive residual networks (`model_residual`, `model_residual_it`) learn to cancel the PDE violations of the latest solution (`model`, `corr`, `corr2`). Key ideas:
