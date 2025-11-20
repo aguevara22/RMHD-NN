@@ -52,7 +52,7 @@ A primary PINN fits available simulation data, stored in the folders data1D and 
 
 $$\mathcal{L}_{\textrm{total}} = w_1 \mathcal{L}_{\textrm{PDE}} + w_2 \mathcal{L}_{\textrm{data}}$$
 
-see ref [1] for more details about physically informed networks.
+see "ref uno" for more details about physically informed networks.
 
 ## Architecture and training
 
