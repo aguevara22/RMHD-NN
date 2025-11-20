@@ -99,8 +99,8 @@ $$
 where $M$ is the time Jacobian, $A_x$ is the spatial Jacobian, and $S = \partial_t M + \partial_x A_x$ in the background $p$. Recall that during training we computed targets
 
 $$
-\mathcal{R}(\mathbf{p}) = M_r  \partial_t \mathbf{p}_r 
-      + A_{X,r} \partial_x \mathbf{p}_r 
+\mathcal{R}(\mathbf{p}) = M  \partial_t \mathbf{p}
+      + A_{x} \partial_x \mathbf{p}
 $$
 
 so that we can now train the network for $\delta\mathbf{p}$ to minimize the difference between the above two equations, namely
