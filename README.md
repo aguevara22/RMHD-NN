@@ -88,19 +88,13 @@ Once the model has finished training we can evaluate the domain residual at rand
 
 ![Residual-guided sampling](residualsample.png)
 
-With such samples we can train successive "residual" networks (`model_residual`) that learn to cancel the PDE violations of the latest solution (`model`). Key steps:
-
-- **Jacobian-based residuals.** `data_out` converts primitive predictions into the reduced Jacobian blocks `M`, `AX`, and differential terms (`dP/dt`, `dP/dx`), enabling a linear form `M(dp/dt - dpdt_r) + AX(dp/dx - dpdx_r) + S p`.
-- **Residual-guided sampling.** `build_residual_mixture_coords` biases collocation points toward regions with high Jacobian residual norms, mixing in uniform samples for coverage.
-- **Iterative correction.** Residual networks subtract from the baseline to produce `corr(x)` and `corr2(x)`, mimicking deferred corrections while sharing samplers and conditioning data.
-- 
-At each collocation point we evaluate the primitive state $\mathbf{p}(x,t)$, and the RMHD system is written in Jacobian form
+With such samples we can train successive "residual" networks (`model_residual`) that learn to cancel the PDE violations of the latest solution (`model`). At each collocation point we evaluate the primitive state $\mathbf{p}(x,t)$, and the RMHD system is written in Jacobian form
 
 $$
 M(\mathbf{p}) \partial_t \mathbf{p} + A_x(\mathbf{p}) \partial_x \mathbf{p} + S(\mathbf{p}) \mathbf{p} = \mathbf{0},
 $$
 
-where $M$ is the time Jacobian, $A_x$ is the spatial Jacobian, and $S = \partial_t M + \partial_x A_x$ captures source-like terms arising from spatially varying operators. During training we compare against precomputed targets
+where $M$ is the time Jacobian, $A_x$ is the spatial Jacobian, and $S = \partial_t M + \partial_x A_x$. During training we compare against precomputed targets
 
 $$
 \mathcal{R}(\hat{\mathbf{p}}) = M_r \big(\partial_t \hat{\mathbf{p}} - \partial_t \mathbf{p}_r \big)
@@ -109,6 +103,12 @@ $$
 $$
 
 and minimize $\Vert \mathcal{R}(\hat{\mathbf{p}})\Vert_2^2$ so that the PINN adheres to the Jacobian PDE while matching conditioning data.
+
+- **Jacobian-based residuals.** `data_out` converts primitive predictions into the reduced Jacobian blocks `M`, `AX`, and differential terms (`dP/dt`, `dP/dx`), enabling a linear form `M(dp/dt - dpdt_r) + AX(dp/dx - dpdx_r) + S p`.
+  
+- **Iterative correction.** Residual networks subtract from the baseline to produce `corr(x)` and `corr2(x)`, mimicking deferred corrections while sharing samplers and conditioning data.
+- 
+
 
 ## Notebook Workflow
 1. **Train baseline PINN (`model`).** Uses Muon optimizer plus domain/data/boundary losses.
