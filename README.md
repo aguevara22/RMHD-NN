@@ -73,7 +73,7 @@ A typical training process for 1d will look as follows:
 
 ![Training process](training.png)
 
-Here the data is supplied at early times `t = 0.0, 0.036, 0.1`. The network provides an accurate extrapolation of the shockwave 1d process. This is true even at late times where no data is provided. 
+Here the data is supplied at early times `t = 0.0, 0.036, 0.1`. The network provides an accurate extrapolawtion of the shockwave 1d process. This is true even at late times where no data is provided. 
 
 For 2d and the above described network we test a cylindrical explosion process.
 
