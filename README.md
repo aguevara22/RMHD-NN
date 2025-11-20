@@ -52,7 +52,7 @@ $$x^\mu \to NN(x)=P=(\rho_0,p_0,u^\mu,B^\mu)$$.
 The loss is constructed to update the weights of the network. It consists of a weighted sum of 
 
 1) the PDE residual obtained from the RMHD equation (in Jacobian form) sampled from random points in the domain
-2) fits to available early time simulation data, stored in the folders data1D and data2D, \mathcal{L}_{\textrm{data}}
+2) fits to available early time simulation data, stored in the folders data1D and data2D, $\mathcal{L}_{\textrm{data}}$
 3) fits to open boundary conditions, namely $P(x,t)$ at the boundaries is constant in time.
 
 Schematically: 
@@ -63,9 +63,9 @@ see [1] for more details about physically informed networks.
 
 ## Architecture and training
 
-The architecture is a standard MLP with different sizes for tests in one and two dimensions. In 1D we use approximately 64 layers of width 32. In 2D we use approximately 128 layers of width 64. Activations are set as trainable hyperbolic tangent.
+The architecture is a standard MLP with different sizes for tests in one and two dimensions. In 1D we use approximately 64 layers of width 32. In 2D we use approximately 128 layers of width 64. Activations are set as trainable hyperbolic tangent. 
 
-A key ingredient to improve convergence of the PDE loss is the implementation of MUON optimizer [2]. MUON allows for rapid training of the previously simulated data during the first ~1000 epochs. We then gradually increase the PDE weight for around ~10000 epochs. *The data is only inocorporated through two snapshots at early times*. 
+A key ingredient to improve convergence of the PDE loss is the implementation of MUON optimizer [2]. MUON allows for rapid training of the previously simulated data during the first ~1000 epochs. We then gradually increase the PDE weight for around ~10000 epochs. *The data is only inocorporated through two snapshots at early times*.  On the other hand, the sampling proceeds by increments of ~500 samples from the domain every 1000 epochs, while data sampling is decreased accordingly. 
 
 A typical training process for 1d will look as follows:
 
