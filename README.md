@@ -57,7 +57,7 @@ The loss is constructed to update the weights of the network. It consists of a w
 
 Schematically: 
 
-$$\mathcal{L}_{\textrm{total}} = w_1 \mathcal{L}_{\textrm{PDE}} + w_2 \mathcal{L}_{\textrm{data}} + w_3 \mathcal{L}_{\textrm{bdy} $$
+$$\mathcal{L}_{\textrm{total}} = w_1 \mathcal{L}_{\textrm{PDE}} + w_2 \mathcal{L}_{\textrm{data}} + w_3 \mathcal{L}_{\textrm{bdy}}$$
 
 see [1] for more details about physically informed networks.
 
@@ -73,7 +73,7 @@ A typical training process for 1d will look as follows:
 
 ![Training process](training.png)
 
-The network provides an accurate extrapolation of the shockwave 1d process. This is true even at late times where no data is provided. 
+Here the data is supplied at early times `t = 0.0, 0.036, 0.1`. The network provides an accurate extrapolation of the shockwave 1d process. This is true even at late times where no data is provided. 
 
 For 2d and the above described network we test a cylindrical explosion process.
 
@@ -82,18 +82,16 @@ For 2d and the above described network we test a cylindrical explosion process.
 ![2D cylindrical explosion](2dcexp.png)
 
 ## Optional: Residual Network
-Two successive residual networks (`model_residual`, `model_residual_it`) learn to cancel the PDE violations of the latest solution (`model`, `corr`, `corr2`). Key ideas:
+
+Once the model has finished training we can evaluate the domain residual at random points. We model a new density of samples according to such residual. For instance in the 1D shocktube we will obtain:
+
+
+With such samples we can train successive "residual" networks (`model_residual`) that learn to cancel the PDE violations of the latest solution (`model`). Key steps:
 
 - **Jacobian-based residuals.** `data_out` converts primitive predictions into the reduced Jacobian blocks `M`, `AX`, and differential terms (`dP/dt`, `dP/dx`), enabling a linear form `M(dp/dt - dpdt_r) + AX(dp/dx - dpdx_r) + S p`.
 - **Residual-guided sampling.** `build_residual_mixture_coords` biases collocation points toward regions with high Jacobian residual norms, mixing in uniform samples for coverage.
 - **Iterative correction.** Residual networks subtract from the baseline to produce `corr(x)` and `corr2(x)`, mimicking deferred corrections while sharing samplers and conditioning data.
-- **Muon optimizer.** Training leverages the custom `PINNMuonOptimizer` (from `mm.py`) for mixed second-order and Adam-like updates.
-
-## Jacobian form of the RMHD system
-- **Model:** For instance, we can take 1D RMHD with a background guide field (`B_x = 5`). Primitive variables are density, velocity, pressure, and transverse magnetic components.
-- **Formulation:** Rather than conservative fluxes, the notebook works with the Jacobian matrices (`compute_M`, `compute_AX`) imported from `jacobians.py`. These encode the linearized PDE system used to define residuals.
-- **Boundary/conditioning data:** Snapshot files in `data1d/` provide time slices at `t = 0.0, 0.036, 0.1` for supervised anchoring. Open boundary data at `t=0` supply additional constraints.
-
+- 
 At each collocation point we evaluate the primitive state $\mathbf{p}(x,t)$, and the RMHD system is written in Jacobian form
 
 $$
