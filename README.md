@@ -86,6 +86,8 @@ For 2d and the above described network we test a cylindrical explosion process.
 Once the model has finished training we can evaluate the domain residual at random points. We model a new density of samples according to such residual. For instance in the 1D shocktube we will obtain:
 
 
+![Residual-guided sampling](residualsample.png)
+
 With such samples we can train successive "residual" networks (`model_residual`) that learn to cancel the PDE violations of the latest solution (`model`). Key steps:
 
 - **Jacobian-based residuals.** `data_out` converts primitive predictions into the reduced Jacobian blocks `M`, `AX`, and differential terms (`dP/dt`, `dP/dx`), enabling a linear form `M(dp/dt - dpdt_r) + AX(dp/dx - dpdx_r) + S p`.
@@ -115,14 +117,17 @@ and minimize $\Vert \mathcal{R}(\hat{\mathbf{p}})\Vert_2^2$ so that the PINN adh
 
 ## Repository Structure
 ```
-RMHD-local/
-├── rmhdpinn.ipynb        # Main notebook described here
-├── RMHDEquations2D.py    # Reference RMHD equations (unused but informative)
-├── jacobians.py          # Computes M/AX Jacobians used in the notebook
-├── mm.py                 # PINNMuonOptimizer and Muon helper utilities
-├── gauss_newton*.py      # Alternative solvers/experiments
-├── data1d/               # Snapshot data (npz files) for conditioning
-└── README.md             # This document
+RMHD-NN/
+├── README.md                # This document
+├── RMHDEquations2D.py       # Reference RMHD equations (informative)
+├── jacobians.py             # Computes M/AX Jacobians used in the notebook
+├── rmhdpinn_1d.ipynb        # 1D PINN workflow
+├── rmhdpinn_2d.ipynb        # 2D PINN workflow
+├── training.png             # 1D training illustration
+├── 2dtrain.png              # 2D training illustration
+├── 2dcexp.png               # 2D cylindrical explosion output
+└── images/
+    └── sun.jpg              # Placeholder/demo image
 ```
 
 ## Prerequisites
