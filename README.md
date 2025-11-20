@@ -71,6 +71,10 @@ The network provides an accurate extrapolation of the shockwave 1d process. This
 
 For 2d and the above described network we test a cylindrical explosion process.
 
+![2D training](2dtrain.png)
+
+![2D cylindrical explosion](2dcexp.png)
+
 ## Optional: Residual Network
 Two successive residual networks (`model_residual`, `model_residual_it`) learn to cancel the PDE violations of the latest solution (`model`, `corr`, `corr2`). Key ideas:
 
