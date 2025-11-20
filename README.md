@@ -115,7 +115,7 @@ This is so that the PINN $p - \delta p$ adheres to the Jacobian PDE.
 ## Notebook Workflow
 1. **Train baseline PINN (`model`).** Uses Muon optimizer plus domain/data/boundary losses.
 2. **Build Jacobian operators and train `model_residual`.** Residual-guided sampling + stored $(M_r, A_{X,r}, S_r, \partial_t\mathbf{p}_r, \partial_x\mathbf{p}_r)$ define `lin_eq`.
-3. **Clean up tensors, recompute operators with `corr(x)`, and train `model_residual_it` to obtain `corr2(x)`.
+3. **Clean up tensors, recompute operators with `corr(x)`, and test for new error (domain loss).
 
 ## Repository Structure
 ```
