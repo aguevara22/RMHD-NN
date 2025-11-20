@@ -18,7 +18,7 @@ Relativistic magnetohydrodynamics (RMHD) describes a conducting fluid coupled to
 
 As in the full GRMHD setup, the governing equations follow from stress--energy conservation, current conservation, and Maxwell (We will further assume the ideal-MHD condition $F^{\mu\nu}u_\nu=0$.). These form a first order coupled PDE system. For their numerical implementation it is usually written in the conservative scheme:
 
-$$ \partial_t U(P) + \partial_i J^i(P) = 0 $$ (*)
+$$ \partial_t U(P) + \partial_i J^i(P) = 0 $$ 
 
 for functions of the primitives $P=(\rho_0,p_0,u^\mu,B^\mu)$. A numerical integrator would typically perform 
 
@@ -28,7 +28,7 @@ for functions of the primitives $P=(\rho_0,p_0,u^\mu,B^\mu)$. A numerical integr
 
 For purposes of training we find it more convenient to expose the linear structure of the equation (*), by casting it as
 
-$$ M \partial_t P + A^i \partial_i P = 0 $$ (**)
+$$ M \partial_t P + A^i \partial_i P = 0 $$ 
 
 where the Jacobians $M=\partial U/\partial P$ and $A^i=\partial J^i/\partial P$ encode the characteristic structure. Indeed, linearizing around a homogeneous background $(\rho_0,p_0,u^\mu_0,B^\mu_0)$ yields a first-order system
 
