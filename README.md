@@ -26,12 +26,15 @@ for functions of the primitives $P=(\rho_0,p_0,u^\mu,B^\mu)$. A numerical integr
 2) The numerical inversion $P=P(U)$, a trascendental function highly sensitive to the background
 3) Evaluate the current divergence $\partial_i J^i(P)$ via finite differences or finite elements and repeat step 1.
 
+For purposes of training we find it more convenient to expose the linear structure of the above equation, by casting it as
 
-Linearizing around a homogeneous background $(\rho_0,p_0,u^\mu_0,B^\mu_0)$ yields a first-order system
+$$ M \partial_t P + A^i \partial_i P = 0 $$
+
+where the Jacobians $M=\partial U/\partial P$ and $A^i=\partial J^i/\partial P$ encode the characteristic structure. Indeed, linearizing around a homogeneous background $(\rho_0,p_0,u^\mu_0,B^\mu_0)$ yields a first-order system
 
 $$ M \partial_t \delta P  + A^i \partial_i \delta P = 0$$
 
-where the Jacobians $A^i=\partial F^i/\partial U$ encode the characteristic structure; the eigenvalues of $A^i n_i$ give the wave speeds along direction $n_i$.
+The eigenvalues of $M^{-1} A^i n_i$ give the wave speeds along direction $n_i$.
 
 Alfvén waves emerge as the transverse, incompressible characteristic family. In RMHD their propagation speed is
 
