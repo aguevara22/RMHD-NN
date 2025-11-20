@@ -88,10 +88,10 @@ Once the model has finished training we can evaluate the domain residual at rand
 
 ![Residual-guided sampling](residualsample.png)
 
-With such samples we can train successive "residual" networks (`model_residual`) that learn to cancel the PDE violations of the latest solution (`model`). At each collocation point we evaluate the primitive state $\mathbf{p}(x,t)$, and the RMHD system is written in Jacobian form
+With such samples we can train successive "residual" networks (`model_residual`) that learn to cancel the PDE violations of the latest solution (`model`). At each collocation point we evaluate the primitive state $\delta\mathbf{p}(x,t)$, and the RMHD system is written in Jacobian form
 
 $$
-M(\mathbf{p}) \partial_t \mathbf{p} + A_x(\mathbf{p}) \partial_x \mathbf{p} + S(\mathbf{p}) \mathbf{p} = \mathbf{0},
+M(\mathbf{p}) \partial_t \delta\mathbf{p} + A_x(\mathbf{p}) \partial_x \delta\mathbf{p} + S(\mathbf{p}) \delta\mathbf{p} = \mathbf{0},
 $$
 
 where $M$ is the time Jacobian, $A_x$ is the spatial Jacobian, and $S = \partial_t M + \partial_x A_x$. During training we compare against precomputed targets
