@@ -11,6 +11,7 @@ A research code (`rmhdpinn.ipynb`) that implements physics-informed neural netwo
 - [Prerequisites](#prerequisites)
 - [Running the Notebook](#running-the-notebook)
 - [Extending the Framework](#extending-the-framework)
+- [References](#references)
 
 ## RMHD
 
@@ -52,7 +53,7 @@ A primary PINN fits available simulation data, stored in the folders data1D and 
 
 $$\mathcal{L}_{\textrm{total}} = w_1 \mathcal{L}_{\textrm{PDE}} + w_2 \mathcal{L}_{\textrm{data}}$$
 
-see "ref uno" for more details about physically informed networks.
+see [1] for more details about physically informed networks.
 
 ## Architecture and training
 
@@ -142,3 +143,7 @@ pip install git+https://github.com/KellerJordan/Muon
 - **Deployment:** Export trained models by scripting the inference calls (`model`, `corr`, `corr2`) and saving weights with `torch.save`.
 
 Feel free to open issues or PRs if you adapt the notebook to new RMHD scenarios or improve the training strategy.
+
+## References
+[1] Placeholder for the primary PINN/RMHD reference (add link).
+[2] Placeholder for supplemental material or dataset documentation (add link).
