@@ -18,7 +18,7 @@ Relativistic magnetohydrodynamics (RMHD) describes a conducting fluid coupled to
 
 As in the full GRMHD setup, the governing equations follow from stress--energy conservation, current conservation, and Maxwell (We will further assume the ideal-MHD condition $F^{\mu\nu}u_\nu=0$.). These form a first order coupled PDE system. For their numerical implementation it is usually written in the conservative scheme:
 
-$$ \partial_t U(P) + \partial_i J^i(P) = 0 $$
+$$ \partial_t U(P) + \partial_i J^i(P) = 0 $$ (*)
 
 for functions of the primitives $P=(\rho_0,p_0,u^\mu,B^\mu)$. A numerical integrator would typically perform 
 
@@ -26,17 +26,15 @@ for functions of the primitives $P=(\rho_0,p_0,u^\mu,B^\mu)$. A numerical integr
 2) The numerical inversion $P=P(U)$, a trascendental function highly sensitive to the background
 3) Evaluate the current divergence $\partial_i J^i(P)$ via finite differences or finite elements and repeat step 1.
 
-For purposes of training we find it more convenient to expose the linear structure of the above equation, by casting it as
+For purposes of training we find it more convenient to expose the linear structure of the equation (*), by casting it as
 
-$$ M \partial_t P + A^i \partial_i P = 0 $$
+$$ M \partial_t P + A^i \partial_i P = 0 $$ (**)
 
 where the Jacobians $M=\partial U/\partial P$ and $A^i=\partial J^i/\partial P$ encode the characteristic structure. Indeed, linearizing around a homogeneous background $(\rho_0,p_0,u^\mu_0,B^\mu_0)$ yields a first-order system
 
-$$ M \partial_t \delta P  + A^i \partial_i \delta P = 0$$
+$$ M \partial_t \delta P  + A^i \partial_i \delta P = 0$$ 
 
-The eigenvalues of $M^{-1} A^i n_i$ give the wave speeds along direction $n_i$.
-
-Alfvén waves emerge as the transverse, incompressible characteristic family. In RMHD their propagation speed is
+The eigenvalues of $M^{-1} A^i n_i$ give the wave speeds along direction $n_i$. For instance, Alfvén waves emerge as the transverse, incompressible characteristic family. In RMHD their propagation speed is
 
 $$v_A^2 = \frac{b^2}{b^2 + h}$$
 
@@ -46,15 +44,27 @@ with $b^2$ the magnetic-field energy density in the fluid frame and $h=\rho_0+p_
 
 ## Overview of our approach
 
-The goal is to approximate RMHD dynamics with a neural surrogate that respects the governing equations. The neural network (PINN) itself is the map $x^\mu \to P=(\rho_0,p_0,u^\mu,B^\mu)$.
+The goal is to approximate RMHD dynamics with a neural surrogate that respects the governing equations. The neural network (PINN) itself is the map 
 
-A primary PINN fits available simulation data, and imposes the constraint $  \partial_t U(P) + \partial_i J^i(P) = 0 $ in the loss function. Schematically:
+$$x^\mu \to NN(x)=P=(\rho_0,p_0,u^\mu,B^\mu)$$.
 
-$$\mathcal{L}_{\textrm{total}} = w_1 \mathcal{L}_{\textrm{PDE}} + w_2 \mathcal{L}_{\textrm{PDE}}$$
+A primary PINN fits available simulation data, stored in the folders data1D and data2D, through a boundary term in the loss function. It then imposes the PDE (**) through a domain term. Schematically:
 
-see [PINN] for more details.
+$$\mathcal{L}_{\textrm{total}} = w_1 \mathcal{L}_{\textrm{PDE}} + w_2 \mathcal{L}_{\textrm{data}}$$
+
+see ref [1] for more details about physically informed networks.
+
+## Architecture and training
+
+The architecture is a standard MLP with different sizes for tests in one and two dimensions. In 1D we use approximately 64 layers of width 32. In 2D we use approximately 128 layers of width 64. Activations are set as trainable hyperbolic tangent.
+
+A key ingredient to improve convergence of the PDE loss is the implementation of MUON optimizer [R] that supersedes Adam. MUON allows for rapid training of the simulated data during the first ~1000 epochs. We then gradually increase the PDE weight for around ~10000 epochs.
+
+A typical training process will look as follows:
 
 
+
+## Optional: Residual Network
 Two successive residual networks (`model_residual`, `model_residual_it`) learn to cancel the PDE violations of the latest solution (`model`, `corr`, `corr2`). Key ideas:
 
 - **Jacobian-based residuals.** `data_out` converts primitive predictions into the reduced Jacobian blocks `M`, `AX`, and differential terms (`dP/dt`, `dP/dx`), enabling a linear form `M(dp/dt - dpdt_r) + AX(dp/dx - dpdx_r) + S p`.
