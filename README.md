@@ -88,25 +88,28 @@ Once the model has finished training we can evaluate the domain residual at rand
 
 ![Residual-guided sampling](residualsample.png)
 
-With such samples we can train successive "residual" networks (`model_residual`) that learn to cancel the PDE violations of the latest solution (`model`). At each collocation point we evaluate the primitive state $\delta\mathbf{p}(x,t)$, and the RMHD system is written in Jacobian form
+With such samples we can train successive "residual" networks (`model_residual`) that learn to cancel the PDE violations of the latest solution (`model`). 
+
+At each collocation point we evaluate a new network for the state $\delta\mathbf{p}(x,t)$. This is an Alfven-like perturbation of the system and sastisfies the linearized PDE
 
 $$
 M(\mathbf{p}) \partial_t \delta\mathbf{p} + A_x(\mathbf{p}) \partial_x \delta\mathbf{p} + S(\mathbf{p}) \delta\mathbf{p} = \mathcal{R}(\mathbf{p}) ,
 $$
 
-where $M$ is the time Jacobian, $A_x$ is the spatial Jacobian, and $S = \partial_t M + \partial_x A_x$. During training we compare against precomputed targets
+where $M$ is the time Jacobian, $A_x$ is the spatial Jacobian, and $S = \partial_t M + \partial_x A_x$ in the background $p$. Recall that during training we computed targets
 
 $$
 \mathcal{R}(\mathbf{p}) = M_r  \partial_t \mathbf{p}_r 
       + A_{X,r} \partial_x \mathbf{p}_r 
 $$
 
-and train a network for $\delta\mathbf{p}$ to minimize the difference between the above two equations. This is so that the PINN $p - \delta p$ adheres to the Jacobian PDE.
+so that we can now train the network for $\delta\mathbf{p}$ to minimize the difference between the above two equations, namely
 
-- **Jacobian-based residuals.** `data_out` converts primitive predictions into the reduced Jacobian blocks `M`, `AX`, and differential terms (`dP/dt`, `dP/dx`), enabling a linear form `M(dp/dt - dpdt_r) + AX(dp/dx - dpdx_r) + S p`.
-  
-- **Iterative correction.** Residual networks subtract from the baseline to produce `corr(x)` and `corr2(x)`, mimicking deferred corrections while sharing samplers and conditioning data.
-- 
+$$
+M(\mathbf{p}) (\partial_t \delta\mathbf{p} - \partial_t p) + A_x(\mathbf{p}) (\partial_x \delta\mathbf{p} - \partial_x p) + S(\mathbf{p}) \delta\mathbf{p} = 0
+$$
+
+This is so that the PINN $p - \delta p$ adheres to the Jacobian PDE.
 
 
 ## Notebook Workflow
