@@ -65,6 +65,8 @@ A typical training process will look as follows:
 
 
 
+![Training process](training.png)
+
 ## Optional: Residual Network
 Two successive residual networks (`model_residual`, `model_residual_it`) learn to cancel the PDE violations of the latest solution (`model`, `corr`, `corr2`). Key ideas:
 
