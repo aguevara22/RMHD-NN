@@ -91,18 +91,17 @@ Once the model has finished training we can evaluate the domain residual at rand
 With such samples we can train successive "residual" networks (`model_residual`) that learn to cancel the PDE violations of the latest solution (`model`). At each collocation point we evaluate the primitive state $\delta\mathbf{p}(x,t)$, and the RMHD system is written in Jacobian form
 
 $$
-M(\mathbf{p}) \partial_t \delta\mathbf{p} + A_x(\mathbf{p}) \partial_x \delta\mathbf{p} + S(\mathbf{p}) \delta\mathbf{p} = \mathbf{0},
+M(\mathbf{p}) \partial_t \delta\mathbf{p} + A_x(\mathbf{p}) \partial_x \delta\mathbf{p} + S(\mathbf{p}) \delta\mathbf{p} = \mathcal{R}(\mathbf{p}) ,
 $$
 
 where $M$ is the time Jacobian, $A_x$ is the spatial Jacobian, and $S = \partial_t M + \partial_x A_x$. During training we compare against precomputed targets
 
 $$
-\mathcal{R}(\hat{\mathbf{p}}) = M_r \big(\partial_t \hat{\mathbf{p}} - \partial_t \mathbf{p}_r \big)
-      + A_{X,r} \big(\partial_x \hat{\mathbf{p}} - \partial_x \mathbf{p}_r \big)
-      + S_r\,\hat{\mathbf{p}},
+\mathcal{R}(\mathbf{p}) = M_r  \partial_t \mathbf{p}_r 
+      + A_{X,r} \partial_x \mathbf{p}_r 
 $$
 
-and minimize $\Vert \mathcal{R}(\hat{\mathbf{p}})\Vert_2^2$ so that the PINN adheres to the Jacobian PDE while matching conditioning data.
+and train a network for $\delta\mathbf{p}$ to minimize the difference between the above two equations. This is so that the PINN $p - \delta p$ adheres to the Jacobian PDE.
 
 - **Jacobian-based residuals.** `data_out` converts primitive predictions into the reduced Jacobian blocks `M`, `AX`, and differential terms (`dP/dt`, `dP/dx`), enabling a linear form `M(dp/dt - dpdt_r) + AX(dp/dx - dpdx_r) + S p`.
   
