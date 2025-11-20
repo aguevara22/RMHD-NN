@@ -43,7 +43,7 @@ with $b^2$ the magnetic-field energy density in the fluid frame and $h=\rho_0+p_
 
 ## Overview of our approach
 
-The goal is to approximate RMHD dynamics with a neural surrogate that respects the governing equations. The neural network (PINN) itself is the map $ x^\mu \to P=(\rho_0,p_0,u^\mu,B^\mu)$.
+The goal is to approximate RMHD dynamics with a neural surrogate that respects the governing equations. The neural network (PINN) itself is the map $x^\mu \to P=(\rho_0,p_0,u^\mu,B^\mu)$.
 
 A primary PINN fits available simulation data, and imposes the constraint $  \partial_t U(P) + \partial_i J^i(P) = 0 $ in the loss function. Schematically:
 
