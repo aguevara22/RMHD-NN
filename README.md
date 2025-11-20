@@ -59,7 +59,7 @@ see [1] for more details about physically informed networks.
 
 The architecture is a standard MLP with different sizes for tests in one and two dimensions. In 1D we use approximately 64 layers of width 32. In 2D we use approximately 128 layers of width 64. Activations are set as trainable hyperbolic tangent.
 
-A key ingredient to improve convergence of the PDE loss is the implementation of MUON optimizer [R] that supersedes Adam. MUON allows for rapid training of the simulated data during the first ~1000 epochs. We then gradually increase the PDE weight for around ~10000 epochs.
+A key ingredient to improve convergence of the PDE loss is the implementation of MUON optimizer [2]. MUON allows for rapid training of the previously simulated data during the first ~1000 epochs. We then gradually increase the PDE weight for around ~10000 epochs. *The data is only inocorporated through two snapshots at early times*. 
 
 A typical training process will look as follows:
 
@@ -147,4 +147,4 @@ Feel free to open issues or PRs if you adapt the notebook to new RMHD scenarios 
 ## References
 [1] Kharazmi, Zhang, Karniadakis (2020). Variational Physics-Informed Neural Networks. https://arxiv.org/abs/2001.04536
 
-[2] Placeholder for supplemental material or dataset documentation (add link).
+[2] Jordan (2024). Muon: An optimizer for the hidden layers of neural networks. https://kellerjordan.github.io/posts/muon/
