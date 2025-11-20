@@ -145,5 +145,6 @@ pip install git+https://github.com/KellerJordan/Muon
 Feel free to open issues or PRs if you adapt the notebook to new RMHD scenarios or improve the training strategy.
 
 ## References
-[1] Placeholder for the primary PINN/RMHD reference (add link).
+[1] Kharazmi, Zhang, Karniadakis (2020). Variational Physics-Informed Neural Networks. https://arxiv.org/abs/2001.04536
+
 [2] Placeholder for supplemental material or dataset documentation (add link).
