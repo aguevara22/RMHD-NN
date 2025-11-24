@@ -359,8 +359,8 @@ def plot_training_progress(
     ref_line = cond(t_slice, xy_line.cpu().numpy(), as_tensor=False)
     rho_idx = PRIMITIVE_LABELS.index("rho")
     x_vals = x_line.cpu().numpy().ravel()
-    ax_line.plot(x_vals, pred_line[:, rho_idx], color="tab:blue", linestyle="-", label=r"$\rho$ (PINN)")
-    ax_line.plot(x_vals, ref_line[:, rho_idx],  color="tab:orange", linestyle="--", label=r"$\rho$ (data)")
+    ax_line.plot(x_vals, pred_line[:, rho_idx], color="tab:blue", linestyle="-", label="rho (PINN)")
+    ax_line.plot(x_vals, ref_line[:, rho_idx],  color="tab:orange", linestyle="--", label="rho (data)")
     ax_line.set_xlabel("x (y = midline)")
     ax_line.set_ylabel("rho")
     ax_line.set_title(f"Lineout comparison at t={t_slice:.2f}")
@@ -607,7 +607,7 @@ def plot_rho_times(model: PINN, times: Iterable[float] = (0.0, 0.2, 0.4), nx: in
 
     fig.subplots_adjust(right=0.85)
     cax = fig.add_axes([0.88, 0.15, 0.02, 0.7])
-    fig.colorbar(pcm, cax=cax, label=r"$\\rho$")
+    fig.colorbar(pcm, cax=cax, label="rho")
     fig.suptitle("Density slices")
     fig.tight_layout(rect=[0, 0, 0.86, 0.98])
     if output_path:
