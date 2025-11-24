@@ -375,6 +375,37 @@ def plot_training_progress(
     plt.close(fig)
 
 
+def plot_field_slice(
+    model: PINN,
+    *,
+    field: str = "rho",
+    t_slice: float = 0.4,
+    nx: int = 160,
+    ny: int = 160,
+    output_path: Path,
+):
+    """Save a single 2D slice plot at the given time."""
+    field_idx = PRIMITIVE_LABELS.index(field)
+    x_vis = torch.linspace(X_DOMAIN[0], X_DOMAIN[1], nx, device=DEVICE)
+    y_vis = torch.linspace(Y_DOMAIN[0], Y_DOMAIN[1], ny, device=DEVICE)
+    X_mesh, Y_mesh = torch.meshgrid(x_vis, y_vis, indexing="ij")
+    coords_vis = torch.stack(
+        [X_mesh.reshape(-1), Y_mesh.reshape(-1), torch.full_like(X_mesh.reshape(-1), t_slice)],
+        dim=1,
+    )
+    with torch.no_grad():
+        field_pred = model(coords_vis)[:, field_idx].reshape(x_vis.numel(), y_vis.numel()).cpu().numpy()
+    fig, ax = plt.subplots(figsize=(6, 5))
+    pcm = ax.pcolormesh(x_vis.cpu().numpy(), y_vis.cpu().numpy(), field_pred.T, shading="auto", cmap="viridis")
+    fig.colorbar(pcm, ax=ax, shrink=0.8, label=field)
+    ax.set_title(f"{field} @ t={t_slice:.2f}")
+    ax.set_xlabel("x")
+    ax.set_ylabel("y")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_path, dpi=150)
+    plt.close(fig)
+
+
 class ScaledMuon(torch.optim.Optimizer):
     def __init__(self, param_groups):
         super().__init__(param_groups, {})
@@ -437,6 +468,8 @@ class TrainingConfig:
     plot_field: str = "rho"
     plot_dir: Path | None = None
     condition_times: List[float] = None
+    slice_interval: int = 700
+    slice_field: str = "rho"
 
 
 def build_optimizer(model: PINN, lrg: float) -> ScaledMuon:
@@ -544,6 +577,10 @@ def train(model: PINN, optimizer: ScaledMuon, config: TrainingConfig):
                 output_path = config.plot_dir / f"training_epoch_{epoch:05d}.png"
             plot_training_progress(history, model, epoch, config.epochs, field=config.plot_field, output_path=output_path)
 
+        if config.slice_interval and config.plot_dir and epoch % config.slice_interval == 0:
+            slice_path = config.plot_dir / f"slice_{config.slice_field}_epoch_{epoch:05d}.png"
+            plot_field_slice(model, field=config.slice_field, t_slice=0.4, output_path=slice_path)
+
     return history
 
 
@@ -608,6 +645,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--plot-interval", type=int, default=0, help="How often to save training plots (0 disables).")
     parser.add_argument("--plot-dir", type=Path, default=None, help="Directory to write training plots.")
     parser.add_argument("--plot-field", type=str, default="rho", help="Field to visualize in training plots.")
+    parser.add_argument("--slice-interval", type=int, default=700, help="How often to save 2D field slice plots.")
+    parser.add_argument("--slice-field", type=str, default="rho", help="Field used for slice plots.")
     parser.add_argument("--save-model", type=Path, default=None, help="Optional path to save the trained model state_dict.")
     parser.add_argument("--t-max", type=float, default=0.4, help="Maximum time for sampling domain points.")
     parser.add_argument("--seed", type=int, default=42, help="Random seed.")
@@ -663,6 +702,8 @@ def main():
         plot_field=args.plot_field,
         plot_dir=args.plot_dir,
         condition_times=args.condition_times,
+        slice_interval=args.slice_interval,
+        slice_field=args.slice_field,
     )
 
     print(f"Training on {DEVICE} with dtype {torch.get_default_dtype()}.")
