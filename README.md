@@ -1,5 +1,7 @@
 # Reconstructing RMHD from Physics Informed Neural Networks
 
+Authors: Corwin Cheung, Marcos Jonhson-Noya, Michael Xiang, Dominic Chang and Alfredo Guevara
+
 A research code (`rmhdpinn.ipynb`) that implements physics-informed neural networks (PINNs) for relativistic magnetohydrodynamics (RMHD). Instead of advancing the standard conservative form, the workflow relies on Jacobians of the primitive-variable system (`M`, `AX`, source terms) to measure how well a neural surrogate satisfies the PDEs. The notebook first trains a baseline PINN, then iteratively learns residual-correction networks using stored Jacobian operators.
 
 ## Table of Contents
