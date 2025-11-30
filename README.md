@@ -104,6 +104,8 @@ Another test involves the generation of a 2d shock in relativistic hydrodynamics
 
 ![2D shock test](2dsck.png)
 
+Crucially the network architecture, scheduler and learning rate are kept precisely as in the cylinder test. We have chosen to use the same network rather than optimizing the hyperparameters to illustrate the versatility of the PINN.
+
 ## Optional: Residual Network
 
 Once the model has finished training we can evaluate the domain residual at random points. We model a new density of samples according to such residual. For instance in the 1D shocktube we will obtain:
