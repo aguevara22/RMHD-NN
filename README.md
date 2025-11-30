@@ -90,11 +90,11 @@ $\partial_i B^i =  0 $
 which is imposed by the PDE but often violated in time evolution. The correction resolves the internal shock in the explostion test. See below for comparison.
 
 
-![2D training shock](rescomp.png)
+<img src="rescomp.png" alt="2D training shock" style="width:70%; height:auto;">
 
 Another test involves the generation of a 2d shock in relativistic hydrodynamics. This simpler setup leads to rapid convergence and sharp resolution.
 
-![2D training shock](shockconv.png)
+<p align="center"><img src="shockconv.png" alt="2D training shock"></p>
 
 ![2D shock test](2dsck.png)
 
