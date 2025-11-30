@@ -190,6 +190,10 @@ pip install git+https://github.com/KellerJordan/Muon
 
 Feel free to open issues or PRs if you adapt the notebook to new RMHD scenarios or improve the training strategy.
 
+## Acknowledgements
+
+We thank Mark Goldstein and Richard Qiu for guidance in the implementation of the network and optimizers.
+
 ## References
 [1] Kharazmi, Zhang, Karniadakis (2020). Variational Physics-Informed Neural Networks. https://arxiv.org/abs/2001.04536
 
