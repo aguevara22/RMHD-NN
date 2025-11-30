@@ -83,6 +83,21 @@ For 2d and the above described network we test a cylindrical explosion process.
 
 ![2D cylindrical explosion](2dcexp.png)
 
+A crucial ingredient in this test is the augmentation of the PDE system by an extra spatial constraing, the divergence free condition
+
+$\partial_i B^i =  0 $ 
+
+which is imposed by the PDE but often violated in time evolution. The correction resolves the internal shock in the explostion test. See below for comparison.
+
+
+![2D training shock](rescomp.png)
+
+Another test involves the generation of a 2d shock in relativistic hydrodynamics. This simpler setup leads to rapid convergence and sharp resolution.
+
+![2D training shock](shockconv.png)
+
+![2D shock test](2dsck.png)
+
 ## Optional: Residual Network
 
 Once the model has finished training we can evaluate the domain residual at random points. We model a new density of samples according to such residual. For instance in the 1D shocktube we will obtain:
