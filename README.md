@@ -92,6 +92,8 @@ which is imposed by the PDE but often violated in time evolution. The correction
 
 <p align="center"><img src="rescomp.png" alt="2D training shock" style="width:507px; height:257px; object-fit:cover; object-position:center;"></p>
 
+### 2d Shocktube test
+
 Another test involves the generation of a 2d shock in relativistic hydrodynamics. This simpler setup leads to rapid convergence and sharp resolution.
 
 <p align="center"><img src="shockconv.png" alt="2D training shock"></p>
