@@ -83,6 +83,8 @@ For 2d and the above described network we test a cylindrical explosion process.
 
 ![2D training](2dtrain.png)
 
+Below we quote representative plots for the density at three different times. The mesh is cut off at t=0.4 due to our estimation that the magnetosonic wave reaches the boundary at $x=0,1$, thus the open boundary conditions cease to be consistent.
+
 ![2D cylindrical explosion](2dcexp.png)
 
 A crucial ingredient in this test is the augmentation of the PDE system by an extra spatial constraing, the divergence free condition
