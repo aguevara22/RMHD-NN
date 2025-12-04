@@ -17,7 +17,7 @@ A research code (`rmhdpinn.ipynb`) that implements physics-informed neural netwo
 
 ## RMHD
 
-The emissions from relativistic plasmas describe the Electromagnetic observations of various astrophysical phenomena including how supermassive black holes grow and evolve \cite{Ricarte_2023}, and the mechanisms behind pulsar and quasar emission  \cite{McKinney_Pulsar,Ighina_quasar}.
+Emission from relativistic plasmas underlies the electromagnetic observations of various astrophysical phenomena, including how supermassive black holes grow and evolve [3], and the mechanisms behind pulsar and quasar emission [4,5].
 
 Relativistic magnetohydrodynamics (RMHD) describes a conducting fluid coupled to electromagnetic fields in a relativistic setting. It is a generalization of more standard MHD in plasma physics and a preamble to the full-fledged GR-MHD modelling of black hole accretion.
 
@@ -200,3 +200,9 @@ We thank Mark Goldstein and Richard Qiu for guidance in the implementation of th
 [1] Kharazmi, Zhang, Karniadakis (2020). Variational Physics-Informed Neural Networks. https://arxiv.org/abs/2001.04536
 
 [2] Jordan (2024). Muon: An optimizer for the hidden layers of neural networks. https://kellerjordan.github.io/posts/muon/
+
+[3] Ricarte, Narayan, Curd (2023). Recipes for Jet Feedback and Spin Evolution of Black Holes with Strongly Magnetized Super-Eddington Accretion Disks. https://iopscience.iop.org/article/10.3847/2041-8213/aceda5/pdf
+
+[4] McKinney (2006). Relativistic force-free electrodynamic simulations of neutron star magnetospheres. http://doi.org/10.1111/j.1745-3933.2006.00150.x
+
+[5] Gammie, McKinney, Toth (2003). HARM: A Numerical Scheme for General Relativistic Magnetohydrodynamics. https://arxiv.org/abs/astro-ph/0301509
