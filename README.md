@@ -19,7 +19,7 @@ A research code (`rmhdpinn.ipynb`) that implements physics-informed neural netwo
 
 Emission from relativistic plasmas underlies the electromagnetic observations of various astrophysical phenomena, including how supermassive black holes grow and evolve [3], and the mechanisms behind pulsar and quasar emission [4,5].
 
-Relativistic magnetohydrodynamics (RMHD) describes a conducting fluid coupled to electromagnetic fields in a relativistic setting. It is a generalization of more standard MHD in plasma physics and a preamble to the full-fledged GR-MHD modelling of black hole accretion.
+Relativistic magnetohydrodynamics (RMHD) describes describes conducting fluid coupled to electromagnetic fields in a relativistic setting. It is a generalization of more standard MHD in plasma physics and a preamble to the full-fledged GR-MHD modelling of black hole accretion.
 
 As in the full GRMHD setup, the governing equations follow from stress--energy conservation, current conservation, and Maxwell (We will further assume the ideal-MHD condition $F^{\mu\nu}u_\nu=0$.). These form a first order coupled PDE system. For their numerical implementation it is usually written in the conservative scheme:
 
