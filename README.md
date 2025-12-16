@@ -50,7 +50,7 @@ The eigenvalues of $M^{-1} A^i n_i$ give the wave speeds along direction $n_i$. 
 
 $$v_A^2 = \frac{b^2}{b^2 + h}$$
 
-where \(b^2\) is the magnetic-field energy density measured in the fluid frame and \(h = \rho_0 + p_0 + \varepsilon_0\) is the relativistic enthalpy. Alfvén waves propagate strictly along magnetic field lines, are transversely polarized, and remain linearly degenerate, making them a key diagnostic of any RMHD surrogate. Accurately reproducing this characteristic structure is therefore a fundamental consistency requirement for the approach adopted here.
+where $b^2$ is the magnetic-field energy density measured in the fluid frame and $h = \rho_0 + p_0 + \varepsilon_0$ is the relativistic enthalpy. Alfvén waves propagate strictly along magnetic field lines, are transversely polarized, and remain linearly degenerate, making them a key diagnostic of any RMHD surrogate. Accurately reproducing this characteristic structure is therefore a fundamental consistency requirement for the approach adopted here.
 
 
 ## Overview of our approach
@@ -68,13 +68,13 @@ w_3\,\mathcal{L}_{\mathrm{bdy}}
 \]
 
 The individual loss components are:
-1. **PDE loss** \(\mathcal{L}_{\mathrm{PDE}}\): the squared residual of the RMHD equations written in Jacobian form,
+1. **PDE loss** $\mathcal{L}_{\mathrm{PDE}}$: the squared residual of the RMHD equations written in Jacobian form,
    \[
    M(P)\,\partial_t P + A^i(P)\,\partial_i P
    \]
    evaluated at randomly sampled collocation points in spacetime. The divergence-free constraint \(\partial_i B^i = 0\) is enforced as an additional spatial equation within this term.
-2. **Data loss** \(\mathcal{L}_{\mathrm{data}}\): an \(L^2\) loss fitting early-time simulation snapshots supplied in the `data1D` and `data2D` directories, including the initial condition at \(t=0\).
-3. **Boundary loss** \(\mathcal{L}_{\mathrm{bdy}}\): a penalty enforcing open boundary conditions by requiring that the primitive variables at the domain boundaries remain constant in time.
+2. **Data loss** $\mathcal{L}_{\mathrm{data}}$: an $L^2$ loss fitting early-time simulation snapshots supplied in the `data1D` and `data2D` directories, including the initial condition at $t=0$.
+3. **Boundary loss** $\mathcal{L}_{\mathrm{bdy}}$: a penalty enforcing open boundary conditions by requiring that the primitive variables at the domain boundaries remain constant in time.
 
 Training proceeds in stages. In the early phase, the network is guided primarily by simulation data to ensure convergence toward the physically relevant solution manifold. As training progresses, the weight of the PDE residual is increased while the influence of data supervision is gradually reduced. This allows the PINN to extrapolate the solution to later times using only the governing RMHD equations. Additional correction networks can then be trained using residual-guided sampling to systematically reduce remaining PDE violations, yielding increasingly accurate RMHD surrogates.
 
