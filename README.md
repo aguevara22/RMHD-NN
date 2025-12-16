@@ -20,9 +20,9 @@ A research code (`rmhdpinn.ipynb`) that implements physics-informed neural netwo
 Relativistic magnetohydrodynamics (RMHD) describes the dynamics of a conducting fluid interacting with electromagnetic fields when bulk flow velocities approach the speed of light. It provides the appropriate effective theory for relativistic plasmas encountered in high-energy astrophysical environments such as black-hole accretion flows, relativistic jets, pulsar winds, and compact-object mergers. RMHD can be viewed as the special-relativistic limit of full general-relativistic MHD (GRMHD), retaining the essential coupling between fluid dynamics and magnetic fields while neglecting spacetime curvature.
 
 Under the assumption of ideal MHD, which is when the electric field vanishes in the fluid rest frame,
-$$ F^{\mu\nu}u_\nu = 0 $$
+$$F^{\mu\nu}u_\nu = 0$$
 the governing equations follow from local conservation of stress–energy and charge together with Maxwell’s equations. These assumptions yield a system of eight coupled, first-order hyperbolic partial differential equations for the primitive variables, supplemented by the elliptic divergence constraint on the magnetic field,
-$$ \partial_i B^i = 0 $$
+$$\partial_i B^i = 0$$
 
 As in the full GRMHD setup, the governing equations follow from stress--energy conservation, current conservation, and Maxwell (We will further assume the ideal-MHD condition $F^{\mu\nu}u_\nu=0$). These form a first order coupled PDE system. For their numerical implementation, it is usually written in the conservative scheme:
 
@@ -56,11 +56,11 @@ The goal of this project is to approximate RMHD dynamics with a continuous neura
 $$x^\mu \to NN(x)=P=(\rho_0,p_0,u^\mu,B^\mu)$$.
 
 Rather than advancing the solution through discrete time stepping, the network is trained so that its output satisfies the RMHD equations throughout spacetime. This is achieved by minimizing a composite loss function that combines physical constraints with data supervision. The total loss is written schematically as
-$$ \mathcal{L}_{\mathrm{total}} = w_1\,\mathcal{L}_{\mathrm{PDE}} + w_2\,\mathcal{L}_{\mathrm{data}} + w_3\,\mathcal{L}_{\mathrm{bdy}} $$
+$$\mathcal{L}_{\textrm{total}} = w_1 \mathcal{L}_{\textrm{PDE}} + w_2 \mathcal{L}_{\textrm{data}} + w_3 \mathcal{L}_{\textrm{bdy}}$$
 
 The individual loss components are:
 1. **PDE loss** $\mathcal{L}_{\mathrm{PDE}}$: the squared residual of the RMHD equations written in Jacobian form,
-   $$ M(P)\,\partial_t P + A^i(P)\,\partial_i P $$
+   $$M(P), \partial_t P + A^i(P),\partial_i P $$
    evaluated at randomly sampled collocation points in spacetime. The divergence-free constraint $\partial_i B^i = 0$ is enforced as an additional spatial equation within this term.
 2. **Data loss** $\mathcal{L}_{\mathrm{data}}$: an $L^2$ loss fitting early-time simulation snapshots supplied in the `data1D` and `data2D` directories, including the initial condition at $t=0$.
 3. **Boundary loss** $\mathcal{L}_{\mathrm{bdy}}$: a penalty enforcing open boundary conditions by requiring that the primitive variables at the domain boundaries remain constant in time.
