@@ -56,6 +56,9 @@ Inlcudes [Motivation](#motivation),
 1) Rename "Extending the Framework" to "Further Work"
 2) Reread to make sure everything makes sense.
 
+## ❌ References
+1) Figure out what needs references.
+
 ## ❌ License
 Check whether we want to include a license. Would be as simple as [adding a file](https://choosealicense.com/licenses/mit/) with some text in the root of the project directory
 
