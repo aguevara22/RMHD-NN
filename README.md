@@ -195,10 +195,24 @@ pip install git+https://github.com/KellerJordan/Muon
 Feel free to open issues or PRs if you adapt the notebook to new RMHD scenarios or improve the training strategy.
 
 ## Contact Information
+**Marcos Johnson-Noya**  
+Harvard College, Harvard John A. Paulson School of Engineering and Applied Sciences  
+Email: `mjohnsonnoya@college.harvard.edu`  
+ORCID: `https://orcid.org/0009-0008-5084-3571`
+
 **Michael Xiang**  
 Harvard College, Harvard John A. Paulson School of Engineering and Applied Sciences  
 Email: `michaelxiang@college.harvard.edu`  
-ORCID: `<insert ORCID>`  
+ORCID: `<insert ORCID>`
+
+**Alfredo Guevara**
+Institute for Advanced Study
+Email: `alfredoguevarax@gmail.com`
+ORCID: `<insert ORCID>`
+
+**Dominic Chang**
+Email: `dominicchang@fas.harvard.edu`
+ORCID: `<insert ORCID>`
 
 ## Acknowledgements
 
