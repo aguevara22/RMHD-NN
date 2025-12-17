@@ -194,6 +194,12 @@ pip install git+https://github.com/KellerJordan/Muon
 
 Feel free to open issues or PRs if you adapt the notebook to new RMHD scenarios or improve the training strategy.
 
+## Contact Information
+**Michael Xiang**  
+Harvard College, Harvard John A. Paulson School of Engineering and Applied Sciences  
+Email: `michaelxiang@college.harvard.edu`  
+ORCID: `<insert ORCID>`  
+
 ## Acknowledgements
 
 We thank Mark Goldstein and Richard Qiu for guidance in the implementation of the network and optimizers.
