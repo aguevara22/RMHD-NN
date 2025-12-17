@@ -21,10 +21,8 @@ Create this section. I envision it will just be a list with each name bolded and
 
 and so on.
 
-## ❌ Short Description (MJN)
+## ✅ Short Description (MJN)
 > A research code (`rmhdpinn.ipynb`) that implements physics-informed neural networks (PINNs) for relativistic magnetohydrodynamics (RMHD)...
-
-IMO fine as is, but I think the description should make reference to the upcoming paper like for example “Research Code for [Insert Paper Name/Citation] that implements…”. Need to peep other repos for papers to see if they’re doing this.
 
 ## ❌ Project Overview
 Includes [Full Description](#full-description), [Project Organization](#project-organization)
