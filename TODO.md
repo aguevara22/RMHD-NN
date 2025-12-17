@@ -7,10 +7,7 @@ TODOs that need to be resolved are marked with ❌. TODOs which are complete are
 # TODOS
 
 ## ✅ Project Title
-## ❌ Authors
-> Authors: Corwin Cheung, Marcos Jonhson-Noya, Michael Xiang, Dominic Chang and Alfredo Guevara
 
-Move to [Contact Information section](#contact-information).
 ## ❌ Contact Information
 Create this section. I envision it will just be a list with each name bolded and information below.
 
