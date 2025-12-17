@@ -17,9 +17,13 @@ A research code (`rmhdpinn.ipynb`) that implements physics-informed neural netwo
 
 ## RMHD
 
-Relativistic magnetohydrodynamics (RMHD) describes a conducting fluid coupled to electromagnetic fields in a relativistic setting. It is a generalization of more standard MHD in plasma physics and a preamble to the full-fledged GR-MHD modelling of black hole accretion.
+Relativistic magnetohydrodynamics (RMHD) describes the dynamics of a conducting fluid interacting with electromagnetic fields when bulk flow velocities approach the speed of light. It provides the appropriate effective theory for relativistic plasmas encountered in high-energy astrophysical environments such as black-hole accretion flows, relativistic jets, pulsar winds, and compact-object mergers. RMHD can be viewed as the special-relativistic limit of full general-relativistic MHD (GRMHD), retaining the essential coupling between fluid dynamics and magnetic fields while neglecting spacetime curvature.
 
-As in the full GRMHD setup, the governing equations follow from stress--energy conservation, current conservation, and Maxwell (We will further assume the ideal-MHD condition $F^{\mu\nu}u_\nu=0$.). These form a first order coupled PDE system. For their numerical implementation it is usually written in the conservative scheme:
+Under the assumption of ideal MHD, which is when the electric field vanishes in the fluid rest frame,
+the governing equations follow from local conservation of stress–energy and charge together with Maxwell’s equations. These assumptions yield a system of eight coupled, first-order hyperbolic partial differential equations for the primitive variables, supplemented by the elliptic divergence constraint on the magnetic field,
+$$\partial_i B^i = 0$$
+
+As in the full GRMHD setup, the governing equations follow from stress--energy conservation, current conservation, and Maxwell (We will further assume the ideal-MHD condition $F^{\mu\nu}u_\nu=0$). These form a first order coupled PDE system. For their numerical implementation, it is usually written in the conservative scheme:
 
 $$ \partial_t U(P) + \partial_i J^i(P) = 0 $$ 
 
@@ -41,27 +45,27 @@ The eigenvalues of $M^{-1} A^i n_i$ give the wave speeds along direction $n_i$. 
 
 $$v_A^2 = \frac{b^2}{b^2 + h}$$
 
-with $b^2$ the magnetic-field energy density in the fluid frame and $h=\rho_0+p_0+\varepsilon_0$ the enthalpy. They propagate strictly along the magnetic field, are polarized perpendicular to both $n_i$ and $B_i$, and remain linearly degenerate, making them an essential diagnostic mode of any RMHD linearization.
-
+where $b^2$ is the magnetic-field energy density measured in the fluid frame and $h = \rho_0 + p_0 + \varepsilon_0$ is the relativistic enthalpy. Alfvén waves propagate strictly along magnetic field lines, are transversely polarized, and remain linearly degenerate, making them a key diagnostic of any RMHD surrogate. Accurately reproducing this characteristic structure is therefore a fundamental consistency requirement for the approach adopted here.
 
 
 ## Overview of our approach
 
-The goal is to approximate RMHD dynamics with a neural surrogate that respects the governing equations. The neural network (PINN) itself is the map 
+The goal of this project is to approximate RMHD dynamics with a continuous neural surrogate that respects the governing equations at the level of their primitive-variable Jacobians. The physics-informed neural network (PINN) represents a direct map from spacetime coordinates to the primitive variables,
 
 $$x^\mu \to NN(x)=P=(\rho_0,p_0,u^\mu,B^\mu)$$.
 
-The loss is constructed to update the weights of the network. It consists of a weighted sum of 
-
-1) the PDE residual obtained from the RMHD equation (in Jacobian form) sampled from random points in the domain
-2) fits to available early time simulation data, stored in the folders data1D and data2D, $\mathcal{L}_{\textrm{data}}$
-3) fits to open boundary conditions, namely $P(x,t)$ at the boundaries is constant in time.
-
-Schematically: 
+Rather than advancing the solution through discrete time stepping, the network is trained so that its output satisfies the RMHD equations throughout spacetime. This is achieved by minimizing a composite loss function that combines physical constraints with data supervision. The total loss is written schematically as
 
 $$\mathcal{L}_{\textrm{total}} = w_1 \mathcal{L}_{\textrm{PDE}} + w_2 \mathcal{L}_{\textrm{data}} + w_3 \mathcal{L}_{\textrm{bdy}}$$
 
-see [1] for more details about physically informed networks.
+The individual loss components are:
+1. **PDE loss** $\mathcal{L}_{\mathrm{PDE}}$: the squared residual of the RMHD equations written in Jacobian form evaluated at randomly sampled collocation points in spacetime. The divergence-free constraint $\partial_i B^i = 0$ is enforced as an additional spatial equation within this term.
+2. **Data loss** $\mathcal{L}_{\mathrm{data}}$: an $L^2$ loss fitting early-time simulation snapshots supplied in the `data1D` and `data2D` directories, including the initial condition at $t=0$.
+3. **Boundary loss** $\mathcal{L}_{\mathrm{bdy}}$: a penalty enforcing open boundary conditions by requiring that the primitive variables at the domain boundaries remain constant in time.
+
+Training proceeds in stages. In the early phase, the network is guided primarily by simulation data to ensure convergence toward the physically relevant solution manifold. As training progresses, the weight of the PDE residual is increased while the influence of data supervision is gradually reduced. This allows the PINN to extrapolate the solution to later times using only the governing RMHD equations. Additional correction networks can then be trained using residual-guided sampling to systematically reduce remaining PDE violations, yielding increasingly accurate RMHD surrogates.
+
+See [1] for more details about physically informed networks.
 
 ## Architecture and training
 
