@@ -9,14 +9,7 @@ TODOs that need to be resolved are marked with ❌. TODOs which are complete are
 ## ✅ Project Title
 
 ## ❌ Contact Information
-Create this section. I envision it will just be a list with each name bolded and information below.
-
-> **Michael Xiang**  
-> Harvard College, Harvard John A. Paulson School of Engineering and Applied Sciences  
-> Email: `<insert email>`  
-> ORCID: `<insert ORCID>`  
-
-and so on.
+Just need ORCIDs to finish the section.
 
 ## ✅ Short Description (MJN)
 > A research code (`rmhdpinn.ipynb`) that implements physics-informed neural networks (PINNs) for relativistic magnetohydrodynamics (RMHD)...
