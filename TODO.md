@@ -39,3 +39,4 @@ Inlcudes [Motivation](#motivation)
 #### ❌ Update Overview of Our Approach
 
 ### ❌ Project Organization
+1) Re-read just to make sure users know what's important.
