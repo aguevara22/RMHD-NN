@@ -27,16 +27,37 @@ and so on.
 ## ❌ Project Overview
 Includes [Full Description](#full-description), [Project Organization](#project-organization)
 ### ❌ Full Description
-Inlcudes [Motivation](#motivation)
+Inlcudes [Motivation](#motivation), 
 #### ✅ Motivation (MX)
 
 #### ❌ Update RMHD Section
 
 1) Re-read to understand what's being said.
 2) Check with Alfredo and Dominic what **specifically** should be changed about this section.
-3) Check what Michael did.
 
 #### ❌ Update Overview of Our Approach
+1) Re-read.
+
+#### ❌ Update Architecture and Training
+1) Re-read.
 
 ### ❌ Project Organization
 1) Re-read just to make sure users know what's important.
+
+## ❌ Installation
+1) Rename prerequisites to installation
+2) Check if installation is working.
+
+## ❌ Usage
+1) Rename "Running the Notebook" to Usage.
+2) Check if steps are working or if anything is missing.
+
+## ❌ Further Work
+1) Rename "Extending the Framework" to "Further Work"
+2) Reread to make sure everything makes sense.
+
+## ❌ License
+Check whether we want to include a license. Would be as simple as [adding a file](https://choosealicense.com/licenses/mit/) with some text in the root of the project directory
+
+## ❌ Acknowledgments
+Reread to make sure it's got everything it needs.
