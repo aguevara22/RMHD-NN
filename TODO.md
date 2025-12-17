@@ -17,7 +17,7 @@ Just need ORCIDs to finish the section.
 ## ❌ Project Overview
 Includes [Full Description](#full-description), [Project Organization](#project-organization)
 ### ❌ Full Description
-Inlcudes [Motivation](#motivation), 
+Inlcudes [Motivation](#motivation), [Update RMHD Section](#update-rmhd-section)
 #### ✅ Motivation (MX)
 
 #### ❌ Update RMHD Section
