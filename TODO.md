@@ -28,13 +28,13 @@ and so on.
 Includes [Full Description](#full-description), [Project Organization](#project-organization)
 ### ❌ Full Description
 Inlcudes [Motivation](#motivation)
-#### ❌ Motivation (MJN)
-Explain importance of RMHD at beginning of RMHD section.
+#### ✅ Motivation (MX)
 
 #### ❌ Update RMHD Section
 
 1) Re-read to understand what's being said.
 2) Check with Alfredo and Dominic what **specifically** should be changed about this section.
+3) Check what Michael did.
 
 #### ❌ Update Overview of Our Approach
 
