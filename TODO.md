@@ -32,10 +32,10 @@ Inlcudes [Motivation](#motivation), [Update RMHD Section](#update-rmhd-section)
 1) Re-read and compare to paper.
 
 ### ❌ Project Organization
-1) Re-read just to make sure users know what's important.
+1) Re-read just to make sure users know what's important (will check after Alfredo makes changes).
 
 ## ❌ Installation
-1) Installation/Running not working.
+1) Installation/Running not working (will check after Alfredo makes changes).
 
 ## ❌ Usage
 1) Installation/Running not working.
@@ -49,5 +49,5 @@ Inlcudes [Motivation](#motivation), [Update RMHD Section](#update-rmhd-section)
 ## ❌ License
 1) Check whether we want to include a license. Would be as simple as [adding a file](https://choosealicense.com/licenses/mit/) with some text in the root of the project directory
 
-## ❌ Acknowledgments
-Reread to make sure it's got everything it needs.
+## ✅ Acknowledgments
+Updated to be the same as the paper.
