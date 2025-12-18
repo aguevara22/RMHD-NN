@@ -34,11 +34,11 @@ Inlcudes [Motivation](#motivation), [Update RMHD Section](#update-rmhd-section)
 ### ❌ Project Organization
 1) Re-read just to make sure users know what's important (will check after Alfredo makes changes).
 
-## ❌ Installation
-1) Installation/Running not working (will check after Alfredo makes changes).
+## ✅ Installation
 
 ## ❌ Usage
-1) Installation/Running not working.
+1) Running not working (will check with Alfredo after he makes changes).
+2) Need to update usage instructions as well (outdated filename).
 
 ## ❌ Further Work
 2) Reread to make sure everything makes sense.
