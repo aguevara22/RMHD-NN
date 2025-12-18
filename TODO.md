@@ -26,10 +26,10 @@ Inlcudes [Motivation](#motivation), [Update RMHD Section](#update-rmhd-section)
 2) Check with Alfredo and Dominic what **specifically** should be changed about this section.
 
 #### ❌ Update Overview of Our Approach
-1) Re-read.
+1) Re-read and compare to paper.
 
 #### ❌ Update Architecture and Training
-1) Re-read.
+1) Re-read and compare to paper.
 
 ### ❌ Project Organization
 1) Re-read just to make sure users know what's important.
@@ -37,20 +37,17 @@ Inlcudes [Motivation](#motivation), [Update RMHD Section](#update-rmhd-section)
 ## ❌ Installation
 1) Installation/Running not working.
 
-
-
 ## ❌ Usage
 1) Installation/Running not working.
 
 ## ❌ Further Work
-1) Rename "Extending the Framework" to "Further Work"
 2) Reread to make sure everything makes sense.
 
 ## ❌ References
 1) Figure out what needs references.
 
 ## ❌ License
-Check whether we want to include a license. Would be as simple as [adding a file](https://choosealicense.com/licenses/mit/) with some text in the root of the project directory
+1) Check whether we want to include a license. Would be as simple as [adding a file](https://choosealicense.com/licenses/mit/) with some text in the root of the project directory
 
 ## ❌ Acknowledgments
 Reread to make sure it's got everything it needs.
