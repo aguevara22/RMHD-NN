@@ -219,7 +219,7 @@ ORCID: `<insert ORCID>`
 
 ## Acknowledgements
 
-We thank Mark Goldstein and Richard Qiu for guidance in the implementation of the network and optimizers.
+This project was partially funded through the Harvard College Research Program (HCRP). We futher thank Harvard Research Computing (HRC) for availability of computing resources. We especially thank Richard Qiu for collaboration and guidance at the beginning stages of this project. We thank Mark Goldstein for suggesting the application of a MUON optimizer. Simulation of initial/early time data was done using the Black Hole Accretion Code (BHAC) which is publicly available in \cite{Porth:2017BHAC}.
 
 ## References
 [1] Kharazmi, Zhang, Karniadakis (2020). Variational Physics-Informed Neural Networks. https://arxiv.org/abs/2001.04536
