@@ -10,7 +10,7 @@ A research code (`rmhdpinn.ipynb`) that implements physics-informed neural netwo
 - [Repository Structure](#repository-structure)
 - [Installation](#installation)
 - [Running the Notebook](#running-the-notebook)
-- [Extending the Framework](#extending-the-framework)
+- [Further Work](#further-work)
 - [References](#references)
 
 ## RMHD
@@ -184,7 +184,7 @@ pip install git+https://github.com/KellerJordan/Muon
 6. Execute the iteration-2 Jacobian builder and train `model_residual_it`.
 7. Use the plotting cells to compare baseline vs corrections, and sample new predictions via `corr` / `corr2`.
 
-## Extending the Framework
+## Further Work
 - **More iterations:** Add additional correction stages by repeating the Jacobian-storage + residual-training pattern.
 - **Higher dimensions:** Replace `jacobians.py` with a higher-dimensional RMHD Jacobian provider and adjust the sampler.
 - **Hybrid losses:** Combine Jacobian residuals with conservative-form residuals for robustness.
