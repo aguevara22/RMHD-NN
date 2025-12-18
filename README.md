@@ -175,7 +175,7 @@ pip install torch numpy matplotlib scipy tqdm jupyter
 pip install git+https://github.com/KellerJordan/Muon
 ```
 
-## Running the Notebook
+## Usage
 1. Launch Jupyter Lab or VS Code and open `rmhdpinn.ipynb`.
 2. Execute the environment and data-loading cells (Sections “Importing data” and “RMHD residual helpers”).
 3. Train the baseline PINN (`# Training Loop`). Track metrics and plots.
