@@ -206,7 +206,7 @@ ORCID: `https://orcid.org/0009-0008-5084-3571`
 **Michael Xiang**  
 Harvard College, Harvard John A. Paulson School of Engineering and Applied Sciences  
 Email: `michaelxiang@college.harvard.edu`  
-ORCID: `<insert ORCID>`
+ORCID: `https://orcid.org/0009-0000-9745-8146`
 
 **Alfredo Guevara**  
 Institute for Advanced Study  
