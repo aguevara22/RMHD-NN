@@ -35,12 +35,12 @@ Inlcudes [Motivation](#motivation), [Update RMHD Section](#update-rmhd-section)
 1) Re-read just to make sure users know what's important.
 
 ## ❌ Installation
-1) Rename prerequisites to installation
-2) Check if installation is working.
+1) Installation/Running not working.
+
+
 
 ## ❌ Usage
-1) Rename "Running the Notebook" to Usage.
-2) Check if steps are working or if anything is missing.
+1) Installation/Running not working.
 
 ## ❌ Further Work
 1) Rename "Extending the Framework" to "Further Work"
