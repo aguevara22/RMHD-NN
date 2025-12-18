@@ -159,7 +159,7 @@ RMHD-NN/
     └── sun.jpg              # Placeholder/demo image
 ```
 
-## uisites
+## Installation
 - Python 3.10+ with `pip`
 - PyTorch ≥ 2.0 (CPU, CUDA, or Apple MPS build)
 - NumPy, Matplotlib, SciPy, tqdm, IPython, Muon optimizer dependency
