@@ -37,8 +37,7 @@ Inlcudes [Motivation](#motivation), [Update RMHD Section](#update-rmhd-section)
 ## ✅ Installation
 
 ## ❌ Usage
-1) Running not working (will check with Alfredo after he makes changes).
-2) Need to update usage instructions as well (outdated filename).
+1) Do we need step-by-step instructions, or is saying run the notebook sufficient?
 
 ## ❌ Further Work
 2) Reread to make sure everything makes sense.
@@ -49,5 +48,5 @@ Inlcudes [Motivation](#motivation), [Update RMHD Section](#update-rmhd-section)
 ## ❌ License
 1) Check whether we want to include a license. Would be as simple as [adding a file](https://choosealicense.com/licenses/mit/) with some text in the root of the project directory
 
-## ✅ Acknowledgments
-Updated to be the same as the paper.
+## ❌ Acknowledgments
+Need to fix citation at the end of the section.
