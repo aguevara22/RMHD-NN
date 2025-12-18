@@ -8,7 +8,7 @@ A research code (`rmhdpinn.ipynb`) that implements physics-informed neural netwo
 - [Physics Background](#physics-background)
 - [Notebook Workflow](#notebook-workflow)
 - [Repository Structure](#repository-structure)
-- [Prerequisites](#prerequisites)
+- [Installation](#installation)
 - [Running the Notebook](#running-the-notebook)
 - [Extending the Framework](#extending-the-framework)
 - [References](#references)
@@ -159,7 +159,7 @@ RMHD-NN/
     └── sun.jpg              # Placeholder/demo image
 ```
 
-## Prerequisites
+## uisites
 - Python 3.10+ with `pip`
 - PyTorch ≥ 2.0 (CPU, CUDA, or Apple MPS build)
 - NumPy, Matplotlib, SciPy, tqdm, IPython, Muon optimizer dependency
