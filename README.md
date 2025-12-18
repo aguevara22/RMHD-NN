@@ -176,7 +176,7 @@ pip install git+https://github.com/KellerJordan/Muon
 ```
 
 ## Usage
-1. Launch Jupyter Lab or VS Code and open `rmhdpinn.ipynb`.
+1. Launch Jupyter Lab or VS Code and open `rmhdpinn_1d.ipynb`.
 2. Execute the environment and data-loading cells (Sections “Importing data” and “RMHD residual helpers”).
 3. Train the baseline PINN (`# Training Loop`). Track metrics and plots.
 4. Run the residual sampler + Jacobian storage cells.
