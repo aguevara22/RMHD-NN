@@ -211,7 +211,7 @@ ORCID: `https://orcid.org/0009-0000-9745-8146`
 **Alfredo Guevara**  
 Institute for Advanced Study  
 Email: `alfredoguevarax@gmail.com`  
-ORCID: `<insert ORCID>`
+ORCID: `https://orcid.org/0000-0002-8963-6560`
 
 **Dominic Chang**  
 Email: `dominicchang@fas.harvard.edu`  
