@@ -75,7 +75,7 @@ A typical training process for 1d will look as follows:
 
 
 
-![Training process](training.png)
+![Training process](images/training.png)
 
 Here the data is supplied at early times `t = 0.0, 0.036, 0.1`. The network provides an accurate extrapolawtion of the shockwave 1d process. This is true even at late times where no data is provided. 
 
@@ -83,11 +83,11 @@ Here the data is supplied at early times `t = 0.0, 0.036, 0.1`. The network prov
 
 For 2d and the above described network we test a cylindrical explosion process.
 
-![2D training](2dtrain.png)
+![2D training](images/2dtrain.png)
 
 Below we quote representative plots for the density at three different times. The mesh is cut off at t=0.4 due to our estimation that the magnetosonic wave reaches the boundary at $x=0,1$, thus the open boundary conditions cease to be consistent.
 
-![2D cylindrical explosion](2dcexp.png)
+![2D cylindrical explosion](images/2dcexp.png)
 
 A crucial ingredient in this test is the augmentation of the PDE system by an extra spatial constraing, the divergence free condition
 
@@ -104,7 +104,7 @@ Another test involves the generation of a 2d shock in relativistic hydrodynamics
 
 <p align="center"><img src="shockconv.png" alt="2D training shock"></p>
 
-![2D shock test](2dsck.png)
+![2D shock test](images/2dsck.png)
 
 Crucially the network architecture, scheduler and learning rate are kept precisely as in the cylinder test. We have chosen to use the same network rather than optimizing the hyperparameters to illustrate the versatility of the PINN.
 
@@ -113,7 +113,7 @@ Crucially the network architecture, scheduler and learning rate are kept precise
 Once the model has finished training we can evaluate the domain residual at random points. We model a new density of samples according to such residual. For instance in the 1D shocktube we will obtain:
 
 
-![Residual-guided sampling](residualsample.png)
+![Residual-guided sampling](images/residualsample.png)
 
 With such samples we can train successive "residual" networks (`model_residual`) that learn to cancel the PDE violations of the latest solution (`model`). 
 
@@ -152,11 +152,7 @@ RMHD-NN/
 ├── jacobians.py             # Computes M/AX Jacobians used in the notebook
 ├── rmhdpinn_1d.ipynb        # 1D PINN workflow
 ├── rmhdpinn_2d.ipynb        # 2D PINN workflow
-├── training.png             # 1D training illustration
-├── 2dtrain.png              # 2D training illustration
-├── 2dcexp.png               # 2D cylindrical explosion output
-└── images/
-    └── sun.jpg              # Placeholder/demo image
+└── images/                  # Images used in the README
 ```
 
 ## Installation
