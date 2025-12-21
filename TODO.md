@@ -49,5 +49,4 @@ Inlcudes [Motivation](#motivation), [Update RMHD Section](#update-rmhd-section)
 ## ❌ License
 1) Check whether we want to include a license. Would be as simple as [adding a file](https://choosealicense.com/licenses/mit/) with some text in the root of the project directory
 
-## ❌ Acknowledgments
-Need to fix citation at the end of the section.
+## ✅ Acknowledgments
