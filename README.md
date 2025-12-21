@@ -147,12 +147,14 @@ This is so that the PINN $p - \delta p$ adheres to the Jacobian PDE.
 ## Repository Structure
 ```
 RMHD-NN/
-├── README.md                # This document
+├── README.md                # Project overview and usage
 ├── RMHDEquations2D.py       # Reference RMHD equations (informative)
-├── jacobians.py             # Computes M/AX Jacobians used in the notebook
+├── jacobians.py             # Computes M/AX Jacobians used in notebooks
 ├── rmhdpinn_1d.ipynb        # 1D PINN workflow
 ├── rmhdpinn_2d.ipynb        # 2D PINN workflow
-└── images/                  # Images used in the README
+├── images/                  # Documentation figures (README.md)
+├── data1d/                  # 1D datasets (training / validation / test)
+└── data2d/                  # 2D datasets (training / validation / test)
 ```
 
 ## Installation
