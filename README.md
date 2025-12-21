@@ -153,8 +153,8 @@ RMHD-NN/
 ├── rmhdpinn_1d.ipynb        # 1D PINN workflow
 ├── rmhdpinn_2d.ipynb        # 2D PINN workflow
 ├── images/                  # Documentation figures (README.md)
-├── data1d/                  # 1D datasets (training / validation / test)
-└── data2d/                  # 2D datasets (training / validation / test)
+├── data1d/                  # 1D datasets
+└── data2d/                  # 2D datasets
 ```
 
 ## Installation
