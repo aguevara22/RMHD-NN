@@ -10,6 +10,7 @@ TODOs that need to be resolved are marked with ❌. TODOs which are complete are
 
 ## ❌ Contact Information
 Just need ORCIDs to finish the section.
+Bumped remaining members
 
 ## ✅ Short Description (MJN)
 > A research code (`rmhdpinn.ipynb`) that implements physics-informed neural networks (PINNs) for relativistic magnetohydrodynamics (RMHD)...
