@@ -40,8 +40,7 @@ Inlcudes [Motivation](#motivation), [Update RMHD Section](#update-rmhd-section)
 ## ❌ Usage
 1) Do we need step-by-step instructions, or is saying run the notebook sufficient?
 
-## ❌ Further Work
-2) Reread to make sure everything makes sense.
+## ✅ Further Work
 
 ## ❌ References
 1) Figure out what needs references.
