@@ -183,6 +183,8 @@ A typical workflow is:
 4. **Inspect convergence and diagnostics.**
    Plotting and evaluation cells compare baseline and corrected solutions and visualize extrapolation to later times.
 
+Important note: before running the notebooks, set the adiabatic index `gamma` in `jacobians.py` to match the experiment. For the 1D shock setup use `gamma = 4/3`; for the 2D cases use `gamma = 5/3`.
+
 Early-time simulation snapshots are loaded from `data1d/` and `data2d/`, while later-time behavior is learned solely from the governing RMHD equations. Running the notebook top-to-bottom with default settings reproduces the results shown in this repository.
 
 
