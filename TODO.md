@@ -36,8 +36,7 @@ Inlcudes [Motivation](#motivation), [Update RMHD Section](#update-rmhd-section)
 
 ## ✅ Installation
 
-## ❌ Usage
-1) Do we need step-by-step instructions, or is saying run the notebook sufficient?
+## ✅ Usage
 
 ## ✅ Further Work
 
