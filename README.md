@@ -138,12 +138,6 @@ $$
 
 This is so that the PINN $p - \delta p$ adheres to the Jacobian PDE.
 
-
-## Notebook Workflow
-1. **Train baseline PINN (`model`).** Uses Muon optimizer plus domain/data/boundary losses.
-2. **Build Jacobian operators and train `model_residual`.** Residual-guided sampling + stored $(M_r, A_{X,r}, S_r, \partial_t\mathbf{p}_r, \partial_x\mathbf{p}_r)$ define `lin_eq`.
-3. **Clean up tensors, recompute operators with `corr(x)`, and test for new error (domain loss).
-
 ## Repository Structure
 ```
 RMHD-NN/
@@ -174,13 +168,23 @@ pip install git+https://github.com/KellerJordan/Muon
 ```
 
 ## Usage
-1. Launch Jupyter Lab or VS Code and open `rmhdpinn_1d.ipynb`.
-2. Execute the environment and data-loading cells (Sections “Importing data” and “RMHD residual helpers”).
-3. Train the baseline PINN (`# Training Loop`). Track metrics and plots.
-4. Run the residual sampler + Jacobian storage cells.
-5. Train `model_residual`, inspect corrections, and run the cleanup cell.
-6. Execute the iteration-2 Jacobian builder and train `model_residual_it`.
-7. Use the plotting cells to compare baseline vs corrections, and sample new predictions via `corr` / `corr2`.
+A good starting point for this project is the notebook `rmhdpinn_1d.ipynb` (and `rmhdpinn_2d.ipynb` for two dimensions).
+A typical workflow is:
+
+1. **Train a baseline PINN (`model`).**
+   Uses the MUON optimizer together with domain, data, and boundary losses to learn a spacetime map to the RMHD primitive variables.
+
+2. **Build Jacobian operators and evaluate residuals.**
+   The RMHD Jacobians $(M, A^i)$ are constructed and the PDE residual is evaluated at sampled collocation points.
+
+3. **Train residual-correction networks (`model_residual`).**
+   Residual-guided sampling is used to train successive correction networks that reduce remaining PDE violations.
+
+4. **Inspect convergence and diagnostics.**
+   Plotting and evaluation cells compare baseline and corrected solutions and visualize extrapolation to later times.
+
+Early-time simulation snapshots are loaded from `data1d/` and `data2d/`, while later-time behavior is learned solely from the governing RMHD equations. Running the notebook top-to-bottom with default settings reproduces the results shown in this repository.
+
 
 ## Further Work
 - **More iterations:** Add additional correction stages by repeating the Jacobian-storage + residual-training pattern.
