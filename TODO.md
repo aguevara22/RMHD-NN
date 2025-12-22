@@ -32,8 +32,7 @@ Inlcudes [Motivation](#motivation), [Update RMHD Section](#update-rmhd-section)
 #### ❌ Update Architecture and Training
 1) Re-read and compare to paper.
 
-### ❌ Project Organization
-1) Re-read just to make sure users know what's important (will check after Alfredo makes changes).
+### ✅ Project Organization
 
 ## ✅ Installation
 
