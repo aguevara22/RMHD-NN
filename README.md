@@ -67,7 +67,7 @@ See [1] for more details about physically informed networks.
 
 ## Architecture and training
 
-The architecture is a standard MLP with different sizes for tests in one and two dimensions. In 1D we use approximately 64 layers of width 32. In 2D we use approximately 128 layers of width 64. Activations are set as trainable hyperbolic tangent. 
+The architecture is a standard MLP with different sizes for tests in one and two dimensions. In 1D we use approximately 64 layers of width 32. In 2D we use approximately 64 layers of width 128. Activations are set as trainable hyperbolic tangent. 
 
 A key ingredient to improve convergence of the PDE loss is the implementation of MUON optimizer [2]. MUON allows for rapid training of the previously simulated data during the first ~1000 epochs. We then gradually increase the PDE weight for around ~10000 epochs. *The data is only inocorporated through two snapshots at early times*.  On the other hand, the sampling proceeds by increments of ~500 samples from the domain every 1000 epochs, while data sampling is decreased accordingly. 
 
@@ -198,7 +198,7 @@ Feel free to open issues or PRs if you adapt the notebook to new RMHD scenarios 
 **Corwin Cheung**  
 Harvard College, Harvard John A. Paulson School of Engineering and Applied Sciences  
 Email: `corwincheung@college.harvard.edu`  
-ORCID: `<insert ORCID>`
+ORCID: `https://orcid.org/0009-0009-7759-623X`
 
 **Marcos Johnson-Noya**  
 Harvard College, Harvard John A. Paulson School of Engineering and Applied Sciences  
@@ -221,7 +221,7 @@ ORCID: `<insert ORCID>`
 
 ## Acknowledgements
 
-This project was partially funded through the Harvard College Research Program (HCRP). We futher thank Harvard Research Computing (HRC) for availability of computing resources. We especially thank Richard Qiu for collaboration and guidance at the beginning stages of this project. We thank Mark Goldstein for suggesting the application of a MUON optimizer. Simulation of initial/early time data was done using the Black Hole Accretion Code (BHAC) [3].
+This project was partially funded through the Harvard College Research Program (HCRP). We further thank Harvard Research Computing (HRC) for availability of computing resources. We especially thank Richard Qiu for collaboration and guidance at the beginning stages of this project. We thank Mark Goldstein for suggesting the application of a MUON optimizer. Simulation of initial/early time data was done using the Black Hole Accretion Code (BHAC) [3].
 
 ## References
 [1] Kharazmi, Zhang, Karniadakis (2020). Variational Physics-Informed Neural Networks. https://arxiv.org/abs/2001.04536
