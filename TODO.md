@@ -1,6 +1,6 @@
 Delete this file when all TODOs are complete!
 # Overview
-Here we keep track of what needs to be updated in `README.md`. Michael and Marcos are loosely following the following [guidelines](https://data.research.cornell.edu/data-management/sharing/writing-readmes-for-research-code-software/) as a reference for what the `README.md` should look like. There are suggestions in the guidelines which we will ignore (e.g. version number for the project) and there things which we will add which are not included in the guidelines (e.g. references section).
+Here we keep track of what needs to be updated in `README.md`. Undergrads are loosely following the following [guidelines](https://data.research.cornell.edu/data-management/sharing/writing-readmes-for-research-code-software/) as a reference for what the `README.md` should look like. There are suggestions in the guidelines which we will ignore (e.g. version number for the project) and there things which we will add which are not included in the guidelines (e.g. references section).
 
 TODOs that need to be resolved are marked with ❌. TODOs which are complete are marked with ✅. Any TODO which can be broken down into smaller pieces should be nested under a parent TODO (using Markdown sub-lists). Initials if TODO assigned to specifc person.
 
