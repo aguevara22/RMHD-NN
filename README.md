@@ -199,27 +199,26 @@ Feel free to open issues or PRs if you adapt the notebook to new RMHD scenarios 
 ## Contact Information
 **Corwin Cheung**  
 Harvard College, Harvard John A. Paulson School of Engineering and Applied Sciences  
-Email: `corwincheung@college.harvard.edu`  
+Email: `corwincheung       @college.harvard`  
 ORCID: `https://orcid.org/0009-0009-7759-623X`
 
 **Marcos Johnson-Noya**  
 Harvard College, Harvard John A. Paulson School of Engineering and Applied Sciences  
-Email: `mjohnsonnoya@college.harvard.edu`  
+Email: `mjohnsonnoya     @college.harvard`  
 ORCID: `https://orcid.org/0009-0008-5084-3571`
 
 **Michael Xiang**  
 Harvard College, Harvard John A. Paulson School of Engineering and Applied Sciences  
-Email: `michaelxiang@college.harvard.edu`  
+Email: `michaelxiang    @college.harvard`  
 ORCID: `https://orcid.org/0009-0000-9745-8146`
 
 **Alfredo Guevara**  
 Institute for Advanced Study  
-Email: `alfredoguevarax@gmail.com`  
+Email: `aguevara  @ias`  
 ORCID: `https://orcid.org/0000-0002-8963-6560`
 
 **Dominic Chang**  
-Email: `dominicchang@fas.harvard.edu`  
-ORCID: `<insert ORCID>`
+Email: `dominicchang      @fas.harvard`  
 
 ## Acknowledgements
 
