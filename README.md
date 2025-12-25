@@ -218,7 +218,7 @@ Email: `aguevara  @ias`
 ORCID: `https://orcid.org/0000-0002-8963-6560`
 
 **Dominic Chang**  
-Email: `dominicchang      @fas.harvard`
+Email: `dominicchang      @fas.harvard`  
 ORCID: `https://orcid.org/0000-0001-9939-5257`
 
 ## Acknowledgements
