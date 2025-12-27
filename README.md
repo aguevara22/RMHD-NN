@@ -152,7 +152,7 @@ RMHD-NN/
 ```
 
 ## Installation
-- Python 3.10+ with `pip`
+- Python 3.10+ with `uv`
 - PyTorch ≥ 2.0 (CPU, CUDA, or Apple MPS build)
 - NumPy, Matplotlib, SciPy, tqdm, IPython, Muon optimizer dependency
 - JupyterLab or VS Code notebooks
@@ -160,11 +160,9 @@ RMHD-NN/
 
 Recommended setup (from the repo root):
 ```bash
-python3 -m venv .venv
+uv venv --python 3.11.3
 source .venv/bin/activate
-pip install --upgrade pip
-pip install torch numpy matplotlib scipy tqdm jupyter
-pip install git+https://github.com/KellerJordan/Muon
+uv pip install -r requirements.txt 
 ```
 
 ## Usage
