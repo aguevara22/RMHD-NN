@@ -93,16 +93,16 @@ A crucial ingredient in this test is the augmentation of the PDE system by an ex
 
 $\partial_i B^i =  0 $ 
 
-which is imposed by the PDE but often violated in time evolution. The correction resolves the internal shock in the explostion test. See below for comparison.
+which is imposed by the PDE but often violated in time evolution. The correction resolves the internal  in the explostion test. See below for comparison.
 
 
-<p align="center"><img src="rescomp.png" alt="2D training shock" style="width:507px; height:257px; object-fit:cover; object-position:center;"></p>
+<p align="center"><img src="images/rescomp.png" alt="2D training shock" style="width:507px; height:257px; object-fit:cover; object-position:center;"></p>
 
 ### 2d Shocktube test
 
 Another test involves the generation of a 2d shock in relativistic hydrodynamics. This simpler setup leads to rapid convergence and sharp resolution.
 
-<p align="center"><img src="shockconv.png" alt="2D training shock"></p>
+<p align="center"><img src="images/shockconv.png" alt="2D training shock"></p>
 
 ![2D shock test](images/2dsck.png)
 
