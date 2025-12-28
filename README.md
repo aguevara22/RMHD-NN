@@ -3,14 +3,18 @@
 A research code (`rmhdpinn.ipynb`) that implements physics-informed neural networks (PINNs) for relativistic magnetohydrodynamics (RMHD). Instead of advancing the standard conservative form, the workflow relies on Jacobians of the primitive-variable system (`M`, `AX`, source terms) to measure how well a neural surrogate satisfies the PDEs. The notebook first trains a baseline PINN, then iteratively learns residual-correction networks using stored Jacobian operators.
 
 ## Table of Contents
-- [RMHD](#RMHD)
-- [Overview](#overview)
-- [Physics Background](#physics-background)
-- [Notebook Workflow](#notebook-workflow)
+- [RMHD](#rmhd)
+- [Overview of Our Approach](#overview-of-our-approach)
+- [Architecture and Training](#architecture-and-training)
+  - [2D Cylindrical Explosion Test](#2d-cylindrical-explosion-test)
+  - [2D Shocktube Test](#2d-shocktube-test)
+- [Optional: Residual Network](#optional-residual-network)
 - [Repository Structure](#repository-structure)
 - [Installation](#installation)
-- [Running the Notebook](#running-the-notebook)
+- [Usage](#usage)
 - [Further Work](#further-work)
+- [Contact Information](#contact-information)
+- [Acknowledgements](#acknowledgements)
 - [References](#references)
 
 ## RMHD
