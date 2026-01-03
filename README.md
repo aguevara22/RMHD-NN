@@ -25,19 +25,19 @@ The equations of ideal-RMHD follow from stress-energy conservation, mass-current
 $$ \partial_t \mathcal{U}^a(\mathcal{P}) + \partial_i \mathcal{J}^{a i}(\mathcal{P}) = 0$$ 
 $$\partial_i B^i = 0$$
 
-for functions of the primitives $P=(\rho_0,p_0,u^\mu,B^\mu)$. A numerical integrator would typically perform 
+For the functions of the primitives $\mathcal{P}=(\rho_0,p_0,u^\mu,B^\mu)$. A numerical integrator would typically perform 
 
-1) time step to update $U(P)$ (primitive function)
-2) The numerical inversion $P=P(U)$, a trascendental function highly sensitive to the background
-3) Evaluate the current divergence $\partial_i J^i(P)$ via finite differences or finite elements and repeat step 1.
+1) time step to update $\mathcal{U}(P)$ (primitive function)
+2) The numerical inversion $\mathcal{P}=\mathcal{P}(U)$, a trascendental function highly sensitive to the background
+3) Evaluate the current divergence $\partial_i \mathcal{J}^i(\mathcal{P})$ via finite differences or finite elements and repeat step 1.
 
 For purposes of training we find it more convenient to expose the linear structure of the equation (*), by casting it as
 
-$$ M \partial_t P + A^i \partial_i P = 0 $$ 
+$$ \mathcal{M} \partial_t \mathcal{P} + \mathcal{A}^i \partial_i \mathcal{P} = 0 $$ 
 
-where the Jacobians $M=\partial U/\partial P$ and $A^i=\partial J^i/\partial P$ encode the characteristic structure. Indeed, linearizing around a homogeneous background $(\rho_0,p_0,u^\mu_0,B^\mu_0)$ yields a first-order system
+where the Jacobians $\mathcal{M}=\partial \mathcal{U}/\partial \mathcal{P}$ and $\mathcal{A}^i=\partial \mathcal{J}^i/\partial \mathcal{P}$ encode the characteristic structure. Indeed, linearizing around a homogeneous background $(\rho_0,p_0,u^\mu_0,B^\mu_0)$ yields a first-order system
 
-$$ M \partial_t \delta P  + A^i \partial_i \delta P = 0$$ 
+$$ \mathcal{M} \partial_t \delta \mathcal{P}  + \mathcal{A}^i \partial_i \delta \mathcal{P} = 0$$ 
 
 The eigenvalues of $M^{-1} A^i n_i$ give the wave speeds along direction $n_i$. For instance, Alfvén waves emerge as the transverse, incompressible characteristic family. In RMHD their propagation speed is
 
