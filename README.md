@@ -18,8 +18,7 @@ A research code (`rmhdpinn.ipynb`) that implements physics-informed neural netwo
 - [References](#references)
 
 ## RMHD
-
-Relativistic magnetohydrodynamics (RMHD) describes the dynamics of a conducting fluid interacting with electromagnetic fields when bulk flow velocities approach the speed of light. It provides the appropriate effective theory for relativistic plasmas encountered in high-energy astrophysical environments such as black-hole accretion flows, relativistic jets, pulsar winds, and compact-object mergers. RMHD can be viewed as the special-relativistic limit of full general-relativistic MHD (GRMHD), retaining the essential coupling between fluid dynamics and magnetic fields while neglecting spacetime curvature.
+Relativistic magnetohydrodynamics (RMHD) describes the dynamics of a conducting fluid interacting with electromagnetic fields when bulk flow velocities approach the speed of light. Accurate modeling of relativistic plasmas is necessary for addressing longstanding questions in high-energy astrophysics, including how galaxies are shaped by their central supermassive black holes, how these black holes grow and evolve, and the physical mechanisms driving pulsar and quasar emission [4–8]. RMHD can be viewed as the special-relativistic limit of full general-relativistic MHD (GRMHD), retaining the essential coupling between fluid dynamics and magnetic fields while neglecting spacetime curvature.
 
 Under the assumption of ideal MHD, which is when the electric field vanishes in the fluid rest frame,
 the governing equations follow from local conservation of stress–energy and charge together with Maxwell’s equations. These assumptions yield a system of eight coupled, first-order hyperbolic partial differential equations for the primitive variables, supplemented by the elliptic divergence constraint on the magnetic field,
@@ -233,3 +232,16 @@ This project was partially funded through the Harvard College Research Program (
 [2] Jordan (2024). Muon: An optimizer for the hidden layers of neural networks. https://kellerjordan.github.io/posts/muon/
 
 [3] Porth, Olivares, Mizuno, et al (2017). The Black Hole Accretion Code. https://arxiv.org/abs/1611.09720
+
+[4] Cho, Prather, Narayan, Su, Natarajan (2025). Bridging Scales in Black Hole Accretion and Feedback: Relativistic Jet linking the Horizon to the Host Galaxy. https://arxiv.org/abs/2507.17818
+
+[5] Kramer, MacDonald, Paraschos, Ricci (2024). Astronomy & Astrophysics, 691, A14. https://doi.org/10.1051/0004-6361/202450978
+
+[6] Ricarte, Narayan, Curd (2023). The Astrophysical Journal Letters, 954, L22. https://doi.org/10.3847/2041-8213/aceda5
+
+[7] McKinney (2006). Monthly Notices of the Royal Astronomical Society, 368, L30. https://doi.org/10.1111/j.1745-3933.2006.00150.x
+
+[8] Ighina, Caccianiga, Connor, et al. (2025). The Astrophysical Journal Letters, 990, L56. https://doi.org/10.3847/2041-8213/aded0a
+
+
+
