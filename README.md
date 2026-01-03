@@ -31,7 +31,7 @@ For the functions of the primitives $\mathcal{P}=(\rho_0,p_0,u^\mu,B^\mu)$. A nu
 2) The numerical inversion $\mathcal{P}=\mathcal{P}(U)$, a trascendental function highly sensitive to the background
 3) Evaluate the current divergence $\partial_i \mathcal{J}^i(\mathcal{P})$ via finite differences or finite elements and repeat step 1.
 
-For purposes of training we find it more convenient to expose the linear structure of the equation (*), by casting it as
+For purposes of training we find it more convenient to expose the linear structure of the above equation, by casting it as
 
 $$ \mathcal{M} \partial_t \mathcal{P} + \mathcal{A}^i \partial_i \mathcal{P} = 0 $$ 
 
