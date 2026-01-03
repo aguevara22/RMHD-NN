@@ -228,17 +228,8 @@ ORCID: `https://orcid.org/0000-0001-9939-5257`
 This project was partially funded through the Harvard College Research Program (HCRP). We further thank Harvard Research Computing (HRC) for availability of computing resources. We especially thank Richard Qiu for collaboration and guidance at the beginning stages of this project. We thank Mark Goldstein for suggesting the application of a MUON optimizer. Simulation of initial/early time data was done using the Black Hole Accretion Code (BHAC) [3].
 
 ## References
+[1] Kharazmi, Zhang, Karniadakis (2020). Variational Physics-Informed Neural Networks. https://arxiv.org/abs/2001.04536
 
-[1] E. Kharazmi, Z. Zhang, and G. E. Karniadakis, *Variational Physics-Informed Neural Networks for Solving Partial Differential Equations*, arXiv:2001.04536 (2020).
+[2] Jordan (2024). Muon: An optimizer for the hidden layers of neural networks. https://kellerjordan.github.io/posts/muon/
 
-[2] J. Martens, M. Zhang, X. Chen, et al., *MUON: An Optimizer for Training Physics-Informed Neural Networks*, arXiv:2405.21055 (2024).
-
-[3] O. Porth, H. Olivares, Y. Mizuno, et al., *The Black Hole Accretion Code*, Computational Astrophysics and Cosmology **4**, 1 (2017).
-
-[4] M. Raissi, P. Perdikaris, and G. E. Karniadakis, *Physics-Informed Neural Networks: A Deep Learning Framework for Solving Forward and Inverse Problems Involving Nonlinear Partial Differential Equations*, Journal of Computational Physics **378**, 686–707 (2019).
-
-[5] A. M. Anile, *Relativistic Fluids and Magneto-Fluids: With Applications in Astrophysics and Plasma Physics*, Cambridge University Press (1989).
-
-[6] S. Nagataki, *Magnetohydrodynamic Simulations of Astrophysical Explosions*, Astrophysical Journal **704**, 937–950 (2009).
-
-[7] Y. Wang, M. Bennani, J. Martens, et al., *Residual-Guided Training of Physics-Informed Neural Networks*, arXiv:2509.14185 (2025).
+[3] Porth, Olivares, Mizuno, et al (2017). The Black Hole Accretion Code. https://arxiv.org/abs/1611.09720
