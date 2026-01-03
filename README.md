@@ -22,7 +22,7 @@ Relativistic magnetohydrodynamics (RMHD) describes the dynamics of a conducting 
 
 The equations of ideal-RMHD follow from stress-energy conservation, mass-current conservation, and Maxwell's equations under the ideal-MHD condition of no electric field in the frame of the fluid. These assumptions yield a system of eight coupled, first-order hyperbolic partial differential equations for the primitive variables with an additional parabolic divergence constraint on the magnetic field. They are often written in the following form (see paper for more details), 
 
-$$ \partial_t U(P) + \partial_i J^i(P) = 0 $$ 
+$$ \partial_t \mathcal{U}^a(\mathcal{P}) + \partial_i \mathcal{J}^{a i}(\mathcal{P}) = 0$$ 
 $$\partial_i B^i = 0$$
 
 for functions of the primitives $P=(\rho_0,p_0,u^\mu,B^\mu)$. A numerical integrator would typically perform 
