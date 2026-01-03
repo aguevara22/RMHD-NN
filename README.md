@@ -20,13 +20,10 @@ A research code (`rmhdpinn.ipynb`) that implements physics-informed neural netwo
 ## RMHD
 Relativistic magnetohydrodynamics (RMHD) describes the dynamics of a conducting fluid interacting with electromagnetic fields when bulk flow velocities approach the speed of light. Accurate modeling of relativistic plasmas is necessary for addressing longstanding questions in high-energy astrophysics, including how galaxies are shaped by their central supermassive black holes, how these black holes grow and evolve, and the physical mechanisms driving pulsar and quasar emission [4–8]. RMHD can be viewed as the special-relativistic limit of full general-relativistic MHD (GRMHD), retaining the essential coupling between fluid dynamics and magnetic fields while neglecting spacetime curvature.
 
-Under the assumption of ideal MHD, which is when the electric field vanishes in the fluid rest frame,
-the governing equations follow from local conservation of stress–energy and charge together with Maxwell’s equations. These assumptions yield a system of eight coupled, first-order hyperbolic partial differential equations for the primitive variables, supplemented by the elliptic divergence constraint on the magnetic field,
-$$\partial_i B^i = 0$$
-
-As in the full GRMHD setup, the governing equations follow from stress--energy conservation, current conservation, and Maxwell (We will further assume the ideal-MHD condition $F^{\mu\nu}u_\nu=0$). These form a first order coupled PDE system. For their numerical implementation, it is usually written in the conservative scheme:
+The equations of ideal-RMHD follow from stress-energy conservation, mass-current conservation, and Maxwell's equations under the ideal-MHD condition of no electric field in the frame of the fluid. These assumptions yield a system of eight coupled, first-order hyperbolic partial differential equations for the primitive variables with an additional parabolic divergence constraint on the magnetic field. They are often written in the following form (see paper for more details), 
 
 $$ \partial_t U(P) + \partial_i J^i(P) = 0 $$ 
+$$\partial_i B^i = 0$$
 
 for functions of the primitives $P=(\rho_0,p_0,u^\mu,B^\mu)$. A numerical integrator would typically perform 
 
