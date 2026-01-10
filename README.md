@@ -48,20 +48,29 @@ where $b^2$ is the magnetic-field energy density measured in the fluid frame and
 
 ## Overview of our approach
 
-The goal of this project is to approximate RMHD dynamics with a continuous neural surrogate that respects the governing equations at the level of their primitive-variable Jacobians. The physics-informed neural network (PINN) represents a direct map from spacetime coordinates to the primitive variables,
+The goal of this project is to approximate RMHD dynamics with a continuous neural surrogate that respects the governing equations at the level of their primitive-variable Jacobians,. The physics-informed neural network (PINN) represents a direct map from spacetime coordinates $x^\mu = (t, x^i)$ to the primitive variables:
 
-$$x^\mu \to NN(x)=P=(\rho_0,p_0,u^\mu,B^\mu)$$.
+$$x^\mu \to NN(x) = P(x^\mu) = (\rho, p, v^i, B^i)$$
 
-Rather than advancing the solution through discrete time stepping, the network is trained so that its output satisfies the RMHD equations throughout spacetime. This is achieved by minimizing a composite loss function that combines physical constraints with data supervision. The total loss is written schematically as
+Instead of conservative flux schemes, the network is trained to satisfy the Jacobian formulation of the RMHD equations.
 
-$$\mathcal{L}_{\textrm{total}} = w_1 \mathcal{L}_{\textrm{PDE}} + w_2 \mathcal{L}_{\textrm{data}} + w_3 \mathcal{L}_{\textrm{bdy}}$$
+$$M_{ab}(P) \partial_t P_b + A^i_{ab}(P) \partial_i P_b = 0$$
 
-The individual loss components are:
-1. **PDE loss** $\mathcal{L}_{\mathrm{PDE}}$: the squared residual of the RMHD equations written in Jacobian form evaluated at randomly sampled collocation points in spacetime. The divergence-free constraint $\partial_i B^i = 0$ is enforced as an additional spatial equation within this term.
-2. **Data loss** $\mathcal{L}_{\mathrm{data}}$: an $L^2$ loss fitting early-time simulation snapshots supplied in the `data1D` and `data2D` directories, including the initial condition at $t=0$.
-3. **Boundary loss** $\mathcal{L}_{\mathrm{bdy}}$: a penalty enforcing open boundary conditions by requiring that the primitive variables at the domain boundaries remain constant in time.
+We also enforce the divergence-free constraint $\partial_i B^i = 0$.
 
-Training proceeds in stages. In the early phase, the network is guided primarily by simulation data to ensure convergence toward the physically relevant solution manifold. As training progresses, the weight of the PDE residual is increased while the influence of data supervision is gradually reduced. This allows the PINN to extrapolate the solution to later times using only the governing RMHD equations. Additional correction networks can then be trained using residual-guided sampling to systematically reduce remaining PDE violations, yielding increasingly accurate RMHD surrogates.
+The network minimizes a composite loss $L_{tot} = w_1 L_{domain} + w_2 L_{data} + w_3 L_{bdy}$, where:
+*   **$L_{domain}$:** The squared residual of the Jacobian PDE and divergence constraint evaluated at random collocation points,.
+*   **$L_{data}$:** $L^2$ error against early-time simulation snapshots (e.g., $t=0.0, 0.036$) used to anchor the solution to the correct physical minimum,.
+*   **$L_{bdy}$:** Penalties enforcing open boundary conditions,.
+
+
+Using the MUON optimizer, early training stages fit data snapshots to avoid trivial solutions ($P_a \approx 0$). Later stages weigh the PDE residual ($w_1$) more heavily, forcing the network to extrapolate shock evolution to later times using only the governing equations,.
+
+To systematically reduce PDE violations, a secondary network learns a perturbation $\delta P$ satisfying the following equation.
+
+$$M_{ab}(P) \partial_t \delta P_b + A^i_{ab}(P) \partial_i \delta P_b \approx R_a(P)$$
+
+where $R_a(P)$ is the residual of the baseline solution.
 
 See [1] for more details about physically informed networks.
 
@@ -72,8 +81,6 @@ The architecture is a standard MLP with different sizes for tests in one and two
 A key ingredient to improve convergence of the PDE loss is the implementation of MUON optimizer [2]. MUON allows for rapid training of the previously simulated data during the first ~1000 epochs. We then gradually increase the PDE weight for around ~10000 epochs. *The data is only inocorporated through two snapshots at early times*.  On the other hand, the sampling proceeds by increments of ~500 samples from the domain every 1000 epochs, while data sampling is decreased accordingly. 
 
 A typical training process for 1d will look as follows:
-
-
 
 ![Training process](images/training.png)
 
