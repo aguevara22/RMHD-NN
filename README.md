@@ -149,11 +149,17 @@ This is so that the PINN $p - \delta p$ adheres to the Jacobian PDE.
 ```
 RMHD-NN/
 ├── README.md                # Project overview and usage
-├── RMHDEquations2D.py       # Reference RMHD equations (informative)
-├── jacobians.py             # Computes M/AX Jacobians used in notebooks
-├── rmhdpinn_1d.ipynb        # 1D PINN workflow
-├── rmhdpinn_2d.ipynb        # 2D PINN workflow
+├── src/
+│   ├── RMHDEquations2D.py   # Reference RMHD equations (informative)
+│   ├── jacobians.py         # Computes M/AX Jacobians used in notebooks
+│   ├── script2d.py          # CLI adaptation of the 2D notebook
+│   └── utils.py
+├── notebooks/
+│   ├── rmhdpinn_1d.ipynb    # 1D PINN workflow
+│   ├── rmhdpinn_2d.ipynb    # 2D PINN workflow
+│   └── archive/             # Older notebook versions
 ├── images/                  # Documentation figures (README.md)
+├── outputs/                 # Generated training plots (gitignored)
 ├── data1d/                  # 1D datasets
 └── data2d/                  # 2D datasets
 ```
@@ -188,14 +194,14 @@ A typical workflow is:
 4. **Inspect convergence and diagnostics.**
    Plotting and evaluation cells compare baseline and corrected solutions and visualize extrapolation to later times.
 
-Important note: before running the notebooks, set the adiabatic index `gamma` in `jacobians.py` to match the experiment. For the 1D shock setup use `gamma = 4/3`; for the 2D cases use `gamma = 5/3`.
+Important note: before running the notebooks, set the adiabatic index `gamma` in `src/jacobians.py` to match the experiment. For the 1D shock setup use `gamma = 4/3`; for the 2D cases use `gamma = 5/3`.
 
 Early-time simulation snapshots are loaded from `data1d/` and `data2d/`, while later-time behavior is learned solely from the governing RMHD equations. Running the notebook top-to-bottom with default settings reproduces the results shown in this repository.
 
 
 ## Further Work
 - **More iterations:** Add additional correction stages by repeating the Jacobian-storage + residual-training pattern.
-- **Higher dimensions:** Replace `jacobians.py` with a higher-dimensional RMHD Jacobian provider and adjust the sampler.
+- **Higher dimensions:** Replace `src/jacobians.py` with a higher-dimensional RMHD Jacobian provider and adjust the sampler.
 - **Hybrid losses:** Combine Jacobian residuals with conservative-form residuals for robustness.
 - **Deployment:** Export trained models by scripting the inference calls (`model`, `corr`, `corr2`) and saving weights with `torch.save`.
 

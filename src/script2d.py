@@ -3,7 +3,7 @@
 Command-line adaptation of rmhdpinn_2d.ipynb.
 
 Usage:
-    python script2d.py --data-dir data2d/2dshock --epochs 15000 --log-interval 50
+    python src/script2d.py --data-dir data2d/2dshock --epochs 15000 --log-interval 50
 
 Plots are saved to disk when --plot-interval is set.
 """
