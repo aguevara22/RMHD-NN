@@ -8,3 +8,11 @@ __pycache__/
 
 # Modal
 app.py
+
+# Training artifacts (generated)
+outputs/
+*.pdf
+
+# Personal
+rmhdpinn_1d_dec16.ipynb
+stiching.py
